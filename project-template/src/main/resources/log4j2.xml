@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration
+    xmlns="http://logging.apache.org/log4j/2.0/config"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config
+    https://raw.githubusercontent.com/apache/logging-log4j2/master/log4j-core/src/main/resources/Log4j-config.xsd"
+    strict="true"
+>
+    <Appenders>
+        <Console name="STDOUT_PLAIN" target="SYSTEM_OUT">
+            <PatternLayout
+                disableAnsi="false"
+                pattern="%d{HH:mm:ss.SSS} %highlight{%-5p} [%-15.15thread] %-15.15logger{20} -- %highlight{%m}%n"
+            />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.sun" level="WARN"/>
+        <Logger name="jdk.event.security" level="INFO"/>
+        <Logger name="sun.rmi" level="WARN"/>
+        <Logger name="sun.rmi.transport" level="WARN"/>
+
+        <Logger name="edu" level="TRACE"/>
+
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT_PLAIN"/>
+        </Root>
+    </Loggers>
+</Configuration>
