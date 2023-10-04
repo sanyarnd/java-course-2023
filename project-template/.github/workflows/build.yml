@@ -25,6 +25,7 @@ jobs:
 
       - id: jacoco
         uses: madrapps/jacoco-report@v1.6.1
+        if: ( github.event_name != 'workflow_dispatch' )
         with:
           paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
           token: ${{ secrets.GITHUB_TOKEN }}
