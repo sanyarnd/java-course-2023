@@ -23,7 +23,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <maven.version>3.8.8</maven.version>
         <jdk.version>21</jdk.version>
         <java.release>21</java.release>
 
@@ -185,10 +184,6 @@
                                         <version>[${jdk.version},)</version>
                                         <message>JDK version must be at least ${jdk.version}</message>
                                     </requireJavaVersion>
-                                    <requireMavenVersion>
-                                        <version>[${maven.version},)</version>
-                                        <message>Maven version should, at least, be ${maven.version}</message>
-                                    </requireMavenVersion>
                                     <banDuplicatePomDependencyVersions/>
                                     <reactorModuleConvergence/>
                                 </rules>
