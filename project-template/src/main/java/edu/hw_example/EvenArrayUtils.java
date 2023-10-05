@@ -1,4 +1,4 @@
-package edu.hw1;
+package edu.hw_example;
 
 import java.util.Objects;
 import org.apache.logging.log4j.LogManager;
