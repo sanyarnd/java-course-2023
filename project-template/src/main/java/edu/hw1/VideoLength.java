@@ -1,13 +1,8 @@
 package edu.hw1;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 
-
 public final class VideoLength {
-    private final static Logger LOGGER = LogManager.getLogger();
-
     public static int getSeconds(String time) {
         Objects.requireNonNull(time);
         String[] str_time = time.split(":");

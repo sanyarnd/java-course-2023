@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class SampleTest {
+public class VideoLengthTest {
     @Test
     @DisplayName("Секунд = 60")
     void test1() {
