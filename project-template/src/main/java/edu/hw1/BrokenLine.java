@@ -10,7 +10,7 @@ public class BrokenLine {
         int n = line.length();
         char[] result = line.toCharArray();
 
-        for (int i = 0; i < n-1; i+=2){
+        for (int i = 0; i < n - 1; i += 2){
             char temp = result[i];
             result[i] = result[i + 1];
             result [i + 1] = temp;
