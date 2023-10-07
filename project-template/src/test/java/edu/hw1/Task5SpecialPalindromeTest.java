@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class SpecialPalindromeTest {
+public class Task5SpecialPalindromeTest {
     @Test
     @DisplayName("Для 1 итерации")
     void test1() {
         // given
         int value = 12321;
         // when
-        boolean test = SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -22,7 +22,7 @@ public class SpecialPalindromeTest {
         // given
         int value = 11211230;
         // when
-        boolean test = SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -32,7 +32,7 @@ public class SpecialPalindromeTest {
         // given
         int value = 13001102;
         // when
-        boolean test = SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -42,7 +42,7 @@ public class SpecialPalindromeTest {
         // given
         int value = 23336014;
         // when
-        boolean test = SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -52,7 +52,7 @@ public class SpecialPalindromeTest {
         // given
         int value = 44;
         // when
-        boolean test = SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -62,7 +62,7 @@ public class SpecialPalindromeTest {
         // given
         int value = 8;
         // when
-        boolean test = SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(false);
     }
@@ -73,7 +73,7 @@ public class SpecialPalindromeTest {
         // given
         int value = 2447;
         // when
-        boolean test = SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(false);
     }
@@ -84,8 +84,19 @@ public class SpecialPalindromeTest {
         // given
         int value = 11211230 ;
         // when
-        boolean test = SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
+    @Test
+    @DisplayName("Сумма чисел больше 10")
+    void test9() {
+        // given
+        int value = 77000095 ;
+        // when
+        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        // then
+        assertThat(test).isEqualTo(true);
+    }
+
 }

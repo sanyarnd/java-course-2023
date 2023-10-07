@@ -5,14 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
-public class BrokenLineTest {
+public class Task4BrokenLineTest {
     @Test
     @DisplayName("Пустая строка")
     void test1() {
         // given
         String test = "";
         // when
-        String answer = BrokenLine.getFixedLine(test);
+        String answer = Task4_BrokenLine.getFixedLine(test);
         // then
         assertThat(answer).isEqualTo("");
     }
@@ -22,7 +22,7 @@ public class BrokenLineTest {
         // given
         String test = "j";
         // when
-        String answer = BrokenLine.getFixedLine(test);
+        String answer = Task4_BrokenLine.getFixedLine(test);
         // then
         assertThat(answer).isEqualTo("j");
     }
@@ -32,7 +32,7 @@ public class BrokenLineTest {
         // given
         String test = "io";
         // when
-        String answer = BrokenLine.getFixedLine(test);
+        String answer = Task4_BrokenLine.getFixedLine(test);
         // then
         assertThat(answer).isEqualTo("oi");
     }
@@ -42,7 +42,7 @@ public class BrokenLineTest {
         // given
         String test = "hTsii  s aimex dpus rtni.g";
         // when
-        String answer = BrokenLine.getFixedLine(test);
+        String answer = Task4_BrokenLine.getFixedLine(test);
         // then
         assertThat(answer).isEqualTo("This is a mixed up string.");
     }

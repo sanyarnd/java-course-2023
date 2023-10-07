@@ -1,6 +1,6 @@
 package edu.hw1;
 
-public class SpecialPalindrome {
+public class Task5_SpecialPalindrome {
     public static boolean isPalindrome(int number) {
         int originalNumber = number;
         int reversedNumber = 0;
@@ -20,17 +20,17 @@ public class SpecialPalindrome {
         }
         if (isPalindrome(value)) {
             return true;
-        } else if (CountDigits.getCountDigits(value) % 2 == 1) {
+        } else if (Task2_CountDigits.getCountDigits(value) % 2 == 1) {
             return false;
         }
 
-        int lengthValue = CountDigits.getCountDigits(value);
+        int lengthValue = Task2_CountDigits.getCountDigits(value);
         var split = new int[lengthValue];
         for (int i = lengthValue - 1; -1 < i; i--){
             split[i] = value % 10;
-            System.out.print(split[i]);
             value /= 10;
         }
+
         int newValue=0;
         newValue += split[0]+split[1];
 
@@ -40,7 +40,7 @@ public class SpecialPalindrome {
             if (add == 0)
                 newValue *= 10;
             else
-                newValue += add * (int) Math.pow(10, CountDigits.getCountDigits(newValue));
+                newValue += add * (int) Math.pow(10, Task2_CountDigits.getCountDigits(newValue));
         }
         return isSpecialPalindrome(newValue);
     }

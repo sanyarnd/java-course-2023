@@ -4,14 +4,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class VideoLengthTest {
+public class Task1VideoLengthTest {
     @Test
     @DisplayName("Секунд = 60")
     void test1() {
         // given
         String time = "00:60";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -21,7 +21,7 @@ public class VideoLengthTest {
         // given
         String time = "00:70";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -31,7 +31,7 @@ public class VideoLengthTest {
         // given
         String time = "";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -41,7 +41,7 @@ public class VideoLengthTest {
         // given
         String time = ":45";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -51,7 +51,7 @@ public class VideoLengthTest {
         // given
         String time = "60:";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -61,7 +61,7 @@ public class VideoLengthTest {
         // given
         String time = ":";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -71,7 +71,7 @@ public class VideoLengthTest {
         // given
         String time = ":45";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -81,7 +81,7 @@ public class VideoLengthTest {
         // given
         String time = "2;45";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -91,7 +91,7 @@ public class VideoLengthTest {
         // given
         String time = "2:45:6";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -101,7 +101,7 @@ public class VideoLengthTest {
         // given
         String time = "2 : 45";
         // whe
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -111,7 +111,7 @@ public class VideoLengthTest {
         // given
         String time = " 2:45 ";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(-1);
     }
@@ -121,7 +121,7 @@ public class VideoLengthTest {
         // given
         String time = "2:45";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(2*60 + 45);
     }
@@ -131,7 +131,7 @@ public class VideoLengthTest {
         // given
         String time = "2:0045";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(2*60 + 45);
     }
@@ -141,7 +141,7 @@ public class VideoLengthTest {
         // given
         String time = "002:00045";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(2*60 + 45);
     }
@@ -151,8 +151,23 @@ public class VideoLengthTest {
         // given
         String time = "999:45";
         // when
-        int wrong = VideoLength.getSeconds(time);
+        int wrong = Task1_VideoLength.getSeconds(time);
         // then
         assertThat(wrong).isEqualTo(999*60 + 45);
+    }
+    @Test
+    @DisplayName("Отрицательное время")
+    void test16() {
+        String time = "999:-45";
+        int wrong = Task1_VideoLength.getSeconds(time);
+        assertThat(wrong).isEqualTo(-1);
+
+        time = "-999:45";
+        wrong = Task1_VideoLength.getSeconds(time);
+        assertThat(wrong).isEqualTo(-1);
+
+        time = "-999:-45";
+        wrong = Task1_VideoLength.getSeconds(time);
+        assertThat(wrong).isEqualTo(-1);
     }
 }

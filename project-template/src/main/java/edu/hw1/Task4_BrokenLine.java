@@ -1,6 +1,6 @@
 package edu.hw1;
 
-public class BrokenLine {
+public class Task4_BrokenLine {
     public static String getFixedLine(String line){
         if(line.isEmpty())
             return "";

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class InsertedArrayTest {
+public class Task3InsertedArrayTest {
     @Test
     @DisplayName("Два пустых массива")
     void test1() {
@@ -12,7 +12,7 @@ public class InsertedArrayTest {
         int[] arr1 = {};
         int[] arr2 = {};
         // when
-        boolean answer = InsertedArray.isInsertable(arr1, arr2);
+        boolean answer = Task3_InsertedArray.isInsertable(arr1, arr2);
         // then
         assertThat(answer).isEqualTo(false);
     }
@@ -23,7 +23,7 @@ public class InsertedArrayTest {
         int[] arr1 = {};
         int[] arr2 = {2, 3, 4};
         // when
-        boolean answer = InsertedArray.isInsertable(arr1, arr2);
+        boolean answer = Task3_InsertedArray.isInsertable(arr1, arr2);
         // then
         assertThat(answer).isEqualTo(false);
     }
@@ -34,7 +34,7 @@ public class InsertedArrayTest {
         int[] arr1 = {3, 4};
         int[] arr2 = {2, 5, 7};
         // when
-        boolean answer = InsertedArray.isInsertable(arr1, arr2);
+        boolean answer = Task3_InsertedArray.isInsertable(arr1, arr2);
         // then
         assertThat(answer).isEqualTo(true);
     }
@@ -45,7 +45,7 @@ public class InsertedArrayTest {
         int[] arr1 = {2, 4};
         int[] arr2 = {2, 5, 7};
         // when
-        boolean answer = InsertedArray.isInsertable(arr1, arr2);
+        boolean answer = Task3_InsertedArray.isInsertable(arr1, arr2);
         // then
         assertThat(answer).isEqualTo(false);
     }
@@ -56,7 +56,7 @@ public class InsertedArrayTest {
         int[] arr1 = {3, 7};
         int[] arr2 = {2, 5, 7};
         // when
-        boolean answer = InsertedArray.isInsertable(arr1, arr2);
+        boolean answer = Task3_InsertedArray.isInsertable(arr1, arr2);
         // then
         assertThat(answer).isEqualTo(false);
     }
@@ -67,7 +67,7 @@ public class InsertedArrayTest {
         int[] arr1 = {1, 8};
         int[] arr2 = {2, 5, 7};
         // when
-        boolean answer = InsertedArray.isInsertable(arr1, arr2);
+        boolean answer = Task3_InsertedArray.isInsertable(arr1, arr2);
         // then
         assertThat(answer).isEqualTo(false);
     }

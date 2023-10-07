@@ -2,7 +2,7 @@ package edu.hw1;
 
 import java.util.Objects;
 
-public final class VideoLength {
+public final class Task1_VideoLength {
     public static int getSeconds(String time) {
         Objects.requireNonNull(time);
         String[] str_time = time.split(":");
