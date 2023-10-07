@@ -2,12 +2,13 @@ package edu.hw1;
 
 import java.util.logging.Logger;
 
-public class Task1 {
+public final class Task1 {
     private Task1() {
     }
 
-    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Task1.class.getName());
 
+    @SuppressWarnings("uncommentedmain")
     public static void main(String[] args) {
         printHelloWorld();
     }
