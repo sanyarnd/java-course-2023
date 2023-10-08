@@ -1,37 +1,54 @@
 package edu.hw1;
 
-public class Task8ChessKnights {
+final class Task8ChessKnights {
+    private Task8ChessKnights() {
+    }
 
-    public static boolean isKnightBoardCapture(int[][] board){
+    final static public int MAX_SQUARE_NUMBER = 8;
+    final static public int HIGH_EDGE = 7;
+    final static public int LOW_EDGE = 0;
+
+    public static boolean isBoardValid(int[][] board) {
+        if (board.length != MAX_SQUARE_NUMBER) {
+            return false;
+        }
+        for (int i = 0; i < MAX_SQUARE_NUMBER; i++) {
+            if (board[i].length != MAX_SQUARE_NUMBER) {
+                return false;
+            }
+            for (int j = 0; j < MAX_SQUARE_NUMBER; j++) {
+                if (board[i][j] != 1 && board[i][j] != 0) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    @SuppressWarnings("MagicNumber")
+    public static boolean isKnightBoardCapture(int[][] board) {
         //ALSO RETURN FALSE IF THE DATA IS INCORRECT
-        if(board.length != 8) return false;
+        if (!isBoardValid(board)) {
+            return false;
+        }
+        //moving of knight
+        int[] dx = {2, 2, -2, -2, 1, 1, -1, -1};
+        int[] dy = {1, -1, 1, -1, 2, -2, 2, -2};
 
-        for(int i = 0; i < 8; i++){
-            if(board[i].length != 8) return false;
-
-            for (int j = 0; j < 8; j++){
-                if(board[i][j] == 0) continue;
-                if(board[i][j] != 1) return false;
-
-                //VERTICALS FIRST
-                //up-left
-                if(i <= 5 && j != 0) if(board[i+2][j-1] == 1) return false;
-                //up-right
-                if(i <= 5 && j != 7) if(board[i+2][j+1] == 1) return false;
-                //down-left
-                if(i >= 2 && j != 0) if(board[i-2][j-1] == 1) return false;
-                //down-right
-                if(i >= 2 && j != 7) if(board[i-2][j+1] == 1) return false;
-
-                //HORIZONTAL FIRST
-                //left-up
-                if(i != 7 && j >= 2) if(board[i+1][j-2] == 1) return false;
-                //left-down
-                if(i != 0 && j >= 2) if(board[i-1][j-2] == 1) return false;
-                //right-up
-                if(i != 7 && j <= 5) if(board[i+1][j+2] == 1) return false;
-                //right-down
-                if(i != 0 && j <= 5) if(board[i-1][j+2] == 1) return false;
+        for (int i = 0; i < MAX_SQUARE_NUMBER; i++) {
+            for (int j = 0; j < MAX_SQUARE_NUMBER; j++) {
+                if (board[i][j] == 1) {
+                    for (int k = 0; k < dx.length; k++) {
+                        int moveX = i + dx[k];
+                        int moveY = j + dy[k];
+                        if (LOW_EDGE <= moveY && moveY <= HIGH_EDGE
+                            && LOW_EDGE <= moveX && moveX <= HIGH_EDGE
+                            && (board[moveY][moveX] == 1)) {
+                            return false;
+                        }
+                    }
+                }
             }
         }
         return true;
