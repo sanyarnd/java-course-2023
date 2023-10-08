@@ -2,23 +2,34 @@ package edu.hw1;
 
 public final class Task3 {
     private Task3() {
-
     }
 
-    private static final int BASE = 10;
+    public static boolean isNestable(int[] array1, int[] array2) {
+        int minArray1 = findMin(array1);
+        int maxArray1 = findMax(array1);
+        int minArray2 = findMin(array2);
+        int maxArray2 = findMax(array2);
 
-    public static int countDigits(int num) {
-        int number = num;
-        if (number == 0) {
-            return 1; // если число равно 0, то у него 1 цифра
+        return minArray1 > minArray2 && maxArray1 < maxArray2;
+    }
+
+    public static int findMin(int[] array) {
+        int min = array[0];
+        for (int num : array) {
+            if (num < min) {
+                min = num;
+            }
         }
+        return min;
+    }
 
-        int count = 0;
-        while (number != 0) {
-            number = number / BASE; // делаем число меньше на один разряд
-            count++; // увеличиваем счетчик цифр
+    public static int findMax(int[] array) {
+        int max = array[0];
+        for (int num : array) {
+            if (num > max) {
+                max = num;
+            }
         }
-
-        return count;
+        return max;
     }
 }

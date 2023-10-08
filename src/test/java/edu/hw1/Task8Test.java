@@ -4,54 +4,83 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task8Test {
 
     @ParameterizedTest
-    @MethodSource("rotateRightArguments")
-    @DisplayName("Циклический сдвиг вправо")
-    void testRotateRight(int input, int shift, int expected) {
-        assertThat(Task8.rotateRight(input, shift)).isEqualTo(expected);
+    @MethodSource("isValidMoveArguments")
+    @DisplayName("Проверка метода isValidMove")
+    void testIsValidMove(int x, int y, boolean expected) {
+        assertThat(Task8.isValidMove(x, y)).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> rotateRightArguments() {
+    private static Stream<Arguments> isValidMoveArguments() {
         return Stream.of(
-            Arguments.of(8, 4, 8),
-            Arguments.of(16, 1, 8),
-            Arguments.of(17, 2, 12)
+            Arguments.of(0, 0, true),
+            Arguments.of(8, 8, false),
+            Arguments.of(-1, 3, false),
+            Arguments.of(3, -1, false)
         );
     }
 
     @ParameterizedTest
-    @MethodSource("rotateLeftArguments")
-    @DisplayName("Циклический сдвиг влево")
-    void testRotateLeft(int input, int shift, int expected) {
-        assertThat(Task8.rotateLeft(input, shift)).isEqualTo(expected);
+    @MethodSource("canKnightCaptureArguments")
+    @DisplayName("Проверка метода canKnightCapture")
+    void testCanKnightCapture(int[][] board, int x, int y, boolean expected) {
+        assertThat(Task8.canKnightCapture(board, x, y)).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> rotateLeftArguments() {
+    private static Stream<Arguments> canKnightCaptureArguments() {
         return Stream.of(
-            Arguments.of(7, 1, 7),
-            Arguments.of(16, 1, 1),
-            Arguments.of(17, 2, 6)
+            Arguments.of(getBoard1(), 3, 3, true),
+            Arguments.of(getBoard1(), 0, 1, false),
+            Arguments.of(getBoard1(), 2, 6, true),
+            Arguments.of(getBoard2(), 3, 3, false),
+            Arguments.of(getBoard2(), 1, 1, true)
         );
     }
 
     @ParameterizedTest
-    @MethodSource("numberOfBitsArguments")
-    @DisplayName("Считает количество битов числа")
-    void testNumberOfBits(int input, int expected) {
-        assertThat(Task8.numberOfBits(input)).isEqualTo(expected);
+    @MethodSource("knightBoardCaptureArguments")
+    @DisplayName("Проверка метода knightBoardCapture")
+    void testKnightBoardCapture(int[][] board, boolean expected) {
+        assertThat(Task8.knightBoardCapture(board)).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> numberOfBitsArguments() {
+    private static Stream<Arguments> knightBoardCaptureArguments() {
         return Stream.of(
-            Arguments.of(8, 4),
-            Arguments.of(16, 5),
-            Arguments.of(17, 5)
+            Arguments.of(getBoard1(), true),
+            Arguments.of(getBoard2(), false)
         );
+    }
+
+    private static int[][] getBoard1() {
+        return new int[][] {
+            {0, 0, 0, 1, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 1, 0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 0, 1, 0, 1, 0},
+            {0, 1, 0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 1, 0, 0, 0, 0, 0, 1},
+            {0, 0, 0, 0, 1, 0, 0, 0}
+        };
+    }
+
+    private static int[][] getBoard2() {
+        return new int[][] {
+            {1, 0, 1, 0, 1, 0, 1, 0},
+            {0, 1, 0, 1, 0, 1, 0, 1},
+            {0, 0, 0, 0, 1, 0, 1, 0},
+            {0, 0, 1, 0, 0, 1, 0, 1},
+            {1, 0, 0, 0, 1, 0, 1, 0},
+            {0, 0, 0, 0, 0, 1, 0, 1},
+            {1, 0, 0, 0, 1, 0, 1, 0},
+            {0, 0, 0, 1, 0, 1, 0, 1}
+        };
     }
 }

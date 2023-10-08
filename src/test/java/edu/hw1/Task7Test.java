@@ -11,33 +11,33 @@ import java.util.stream.Stream;
 public class Task7Test {
 
     @ParameterizedTest
-    @MethodSource("testCountKArguments")
-    @DisplayName("За сколько шагов получим 6174")
-    void testCountK(int input, int expectedSteps) {
-        assertThat(Task7.countK(input)).isEqualTo(expectedSteps);
+    @MethodSource("rotateRightArguments")
+    @DisplayName("Циклический сдвиг вправо")
+    void testRotateRight(int input, int shift, int expected) {
+        assertThat(Task7.rotateRight(input, shift)).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> testCountKArguments() {
+    private static Stream<Arguments> rotateRightArguments() {
         return Stream.of(
-            Arguments.of(6621, 5),
-            Arguments.of(6554, 4),
-            Arguments.of(1234, 3)
+            Arguments.of(8, 4, 8),
+            Arguments.of(16, 1, 8),
+            Arguments.of(17, 2, 12)
         );
     }
 
     @ParameterizedTest
-    @MethodSource("testSortDigitsArguments")
-    @DisplayName("Правильно ли сортирует функция SortDigits")
-    void testSortDigits(int[] input, boolean ascending, int expectedSortedNumber) {
-        assertThat(Task7.sortDigits(input, ascending)).isEqualTo(expectedSortedNumber);
+    @MethodSource("rotateLeftArguments")
+    @DisplayName("Циклический сдвиг влево")
+    void testRotateLeft(int input, int shift, int expected) {
+        assertThat(Task7.rotateLeft(input, shift)).isEqualTo(expected);
     }
 
-    private static Stream<Arguments> testSortDigitsArguments() {
+    private static Stream<Arguments> rotateLeftArguments() {
         return Stream.of(
-            Arguments.of(new int[] {1, 2}, true, 12),
-            Arguments.of(new int[] {6, 6, 2, 1}, true, 1266),
-            Arguments.of(new int[] {6, 5, 5, 4}, false, 6554),
-            Arguments.of(new int[] {1, 2, 3, 4}, false, 4321)
+            Arguments.of(7, 1, 7),
+            Arguments.of(16, 1, 1),
+            Arguments.of(17, 2, 6)
         );
     }
+
 }

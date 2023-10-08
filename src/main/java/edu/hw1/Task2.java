@@ -2,26 +2,23 @@ package edu.hw1;
 
 public final class Task2 {
     private Task2() {
+
     }
 
-    private static final int MINUTES_IN_HOUR = 60;
+    private static final int BASE = 10;
 
-    public static int minutesToSeconds(String time) {
-        String[] parts = time.split(":");
-
-        if (parts.length != 2 || time.charAt(time.length() - 1) == ':') {
-            return -1; // некорректный формат строки
+    public static int countDigits(int num) {
+        int number = num;
+        if (number == 0) {
+            return 1; // если число равно 0, то у него 1 цифра
         }
 
-        try {
-            int minutes = Integer.parseInt(parts[0]);
-            int seconds = Integer.parseInt(parts[1]);
-            if (seconds >= MINUTES_IN_HOUR) {
-                return -1; // некорректное количество секунд
-            }
-            return minutes * MINUTES_IN_HOUR + seconds;
-        } catch (NumberFormatException e) {
-            return -1; // некорректные символы в строке
+        int count = 0;
+        while (number != 0) {
+            number = number / BASE; // делаем число меньше на один разряд
+            count++; // увеличиваем счетчик цифр
         }
+
+        return count;
     }
 }

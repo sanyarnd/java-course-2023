@@ -4,25 +4,38 @@ public final class Task8 {
     private Task8() {
     }
 
-    private static final int BITS = 32;
+    private static final int BOARD_SIZE = 8;
+    private static final int MOVE = 2;
 
-    public static int numberOfBits(int n) {
-        return (int) (Math.log(n) / Math.log(2)) + 1;
+    public static boolean isValidMove(int x, int y) {
+        return x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
     }
 
-    public static int rotateRight(int n, int sh) { // циклический сдвиг числа вправо
-        int shift = sh;
-        int numBits = numberOfBits(n);
-        shift %= BITS;
-        return (n >>> shift) | (n << (numBits - shift)) & ((1 << numBits) - 1);
+    public static boolean canKnightCapture(int[][] board, int x, int y) {
+        int[][] moves = {// all possible knight moves
+            {-MOVE, -1}, {-MOVE, 1}, {-1, -MOVE}, {-1, MOVE},
+            {1, -MOVE}, {1, MOVE}, {MOVE, -1}, {MOVE, 1}
+        };
+
+        for (int[] move : moves) { // try out different moves
+            int newX = x + move[0];
+            int newY = y + move[1];
+            if (isValidMove(newX, newY) && board[newX][newY] == 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public static int rotateLeft(int n, int sh) { // циклический сдвиг числа влево
-        int shift = sh;
-        int numBits = numberOfBits(n);
-        shift %= BITS; // убедимся, что сдвиг находится в пределах 32 бит
-        return (n << shift & ((1 << numBits) - 1)) | (n >> (numBits - shift));
+    public static boolean knightBoardCapture(int[][] board) {
+        for (int i = 0; i < BOARD_SIZE; i++) { // traverse
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                if (board[i][j] == 1 && canKnightCapture(board, i, j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }
-

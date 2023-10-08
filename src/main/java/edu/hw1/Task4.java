@@ -4,32 +4,13 @@ public final class Task4 {
     private Task4() {
     }
 
-    public static boolean isNestable(int[] array1, int[] array2) {
-        int minArray1 = findMin(array1);
-        int maxArray1 = findMax(array1);
-        int minArray2 = findMin(array2);
-        int maxArray2 = findMax(array2);
-
-        return minArray1 > minArray2 && maxArray1 < maxArray2;
-    }
-
-    public static int findMin(int[] array) {
-        int min = array[0];
-        for (int num : array) {
-            if (num < min) {
-                min = num;
-            }
+    public static String fixString(String input) {
+        char[] characters = input.toCharArray();
+        for (int i = 0; i < characters.length - 1; i += 2) {
+            char temp = characters[i];
+            characters[i] = characters[i + 1];
+            characters[i + 1] = temp;
         }
-        return min;
-    }
-
-    public static int findMax(int[] array) {
-        int max = array[0];
-        for (int num : array) {
-            if (num > max) {
-                max = num;
-            }
-        }
-        return max;
+        return new String(characters);
     }
 }

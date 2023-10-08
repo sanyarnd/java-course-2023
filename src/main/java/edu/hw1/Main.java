@@ -5,6 +5,6 @@ public final class Main {
     }
 
     public static void main(String[] args) {
-        Task1.printHelloWorld();
+        Task0.printHelloWorld();
     }
 }

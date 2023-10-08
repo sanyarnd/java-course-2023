@@ -4,63 +4,40 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task6Test {
 
     @ParameterizedTest
-    @MethodSource("palindromeDescendantProvider")
-    @DisplayName("Является ли палиндромом число или его предки")
-    public void testIsPalindromeDescendant(String input, boolean expected) {
-        assertThat(Task6.isPalindromeDescendant(input)).isEqualTo(expected);
+    @MethodSource("testCountKArguments")
+    @DisplayName("За сколько шагов получим 6174")
+    void testCountK(int input, int expectedSteps) {
+        assertThat(Task6.calculateKaprekarConstant(input)).isEqualTo(expectedSteps);
     }
 
-    private static Stream<Arguments> palindromeDescendantProvider() {
+    private static Stream<Arguments> testCountKArguments() {
         return Stream.of(
-            Arguments.of("11211230", true),
-            Arguments.of("13001120", true),
-            Arguments.of("23336014", true),
-            Arguments.of("11", true),
-            Arguments.of("123", true),
-            Arguments.of("1234", false)
+            Arguments.of(6621, 5),
+            Arguments.of(6554, 4),
+            Arguments.of(1234, 3)
         );
     }
 
     @ParameterizedTest
-    @MethodSource("palindromeProvider")
-    @DisplayName("Проверка функции палиндрома")
-    public void testIsPalindrome(String input, boolean expected) {
-        assertThat(Task6.isPalindrome(input)).isEqualTo(expected);
+    @MethodSource("testSortDigitsArguments")
+    @DisplayName("Правильно ли сортирует функция SortDigits")
+    void testSortDigits(int[] input, boolean ascending, int expectedSortedNumber) {
+        assertThat(Task6.sortDigits(input, ascending)).isEqualTo(expectedSortedNumber);
     }
 
-    private static Stream<Arguments> palindromeProvider() {
+    private static Stream<Arguments> testSortDigitsArguments() {
         return Stream.of(
-            Arguments.of("123", false),
-            Arguments.of("12", false),
-            Arguments.of("123", false),
-            Arguments.of("121", true),
-            Arguments.of("1221", true),
-            Arguments.of("12321", true)
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("descendantProvider")
-    @DisplayName("Проверка подсчёта предка числа")
-    public void testSumAdjacentDigits(String input, String expected) {
-        assertThat(Task6.calculateDescendant(input)).isEqualTo(expected);
-    }
-
-    private static Stream<Arguments> descendantProvider() {
-        return Stream.of(
-            Arguments.of("11211230", "2333"),
-            Arguments.of("13001120", "4022"),
-            Arguments.of("11", "2"),
-            Arguments.of("123", "33"),
-            Arguments.of("56", "11")
+            Arguments.of(new int[] {1, 2}, true, 12),
+            Arguments.of(new int[] {6, 6, 2, 1}, true, 1266),
+            Arguments.of(new int[] {6, 5, 5, 4}, false, 6554),
+            Arguments.of(new int[] {1, 2, 3, 4}, false, 4321)
         );
     }
 }
