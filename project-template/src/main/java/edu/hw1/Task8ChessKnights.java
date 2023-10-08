@@ -1,6 +1,6 @@
 package edu.hw1;
 
-public class Task8_ChessKnights {
+public class Task8ChessKnights {
 
     public static boolean isKnightBoardCapture(int[][] board){
         //ALSO RETURN FALSE IF THE DATA IS INCORRECT

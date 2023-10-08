@@ -20,7 +20,7 @@ public class Task8ChessKnightsTest {
             {0, 0, 0, 0, 1, 0, 0, 0}
         };
         // when
-        boolean test = Task8_ChessKnights.isKnightBoardCapture(board);
+        boolean test = Task8ChessKnights.isKnightBoardCapture(board);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -40,7 +40,7 @@ public class Task8ChessKnightsTest {
             {0, 0, 0, 1, 0, 1, 0, 1}
         };
         // when
-        boolean test = Task8_ChessKnights.isKnightBoardCapture(board);
+        boolean test = Task8ChessKnights.isKnightBoardCapture(board);
         // then
         assertThat(test).isEqualTo(false);
     }
@@ -60,7 +60,7 @@ public class Task8ChessKnightsTest {
             {1, 0, 0, 0, 0, 0, 0, 0}
         };
         // when
-        boolean test = Task8_ChessKnights.isKnightBoardCapture(board);
+        boolean test = Task8ChessKnights.isKnightBoardCapture(board);
         // then
         assertThat(test).isEqualTo(false);
     }

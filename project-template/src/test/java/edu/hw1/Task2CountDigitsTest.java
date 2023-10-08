@@ -11,7 +11,7 @@ public class Task2CountDigitsTest {
         // given
         int value = 123456;
         // when
-        int test = Task2_CountDigits.getCountDigits(value);
+        int test = Task2CountDigits.getCountDigits(value);
         // then
         assertThat(test).isEqualTo(6);
     }
@@ -21,7 +21,7 @@ public class Task2CountDigitsTest {
         // given
         int value = 0;
         // when
-        int test = Task2_CountDigits.getCountDigits(value);
+        int test = Task2CountDigits.getCountDigits(value);
         // then
         assertThat(test).isEqualTo(1);
     }

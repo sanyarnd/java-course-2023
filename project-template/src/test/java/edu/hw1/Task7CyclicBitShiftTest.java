@@ -12,11 +12,11 @@ public class Task7CyclicBitShiftTest {
         int value = -1;
         int shift = 2;
         // when
-        int test = Task7_CyclicBitShift.rotateLeft(value, shift);
+        int test = Task7CyclicBitShift.rotateLeft(value, shift);
         // then
         assertThat(test).isEqualTo(-1);
         // when
-        test = Task7_CyclicBitShift.rotateRight(value, shift);
+        test = Task7CyclicBitShift.rotateRight(value, shift);
         // then
         assertThat(test).isEqualTo(-1);
 
@@ -28,11 +28,11 @@ public class Task7CyclicBitShiftTest {
         int value = 5;
         int shift = -2;
         // when
-        int test = Task7_CyclicBitShift.rotateLeft(value, shift);
+        int test = Task7CyclicBitShift.rotateLeft(value, shift);
         // then
         assertThat(test).isEqualTo(-1);
         // when
-        test = Task7_CyclicBitShift.rotateRight(value, shift);
+        test = Task7CyclicBitShift.rotateRight(value, shift);
         // then
         assertThat(test).isEqualTo(-1);
     }
@@ -43,7 +43,7 @@ public class Task7CyclicBitShiftTest {
         int value = 8;
         int shift = 10;
         // when
-        int test = Task7_CyclicBitShift.rotateLeft(value, shift);
+        int test = Task7CyclicBitShift.rotateLeft(value, shift);
         // then
         assertThat(test).isEqualTo(2);
     }
@@ -54,7 +54,7 @@ public class Task7CyclicBitShiftTest {
         int value = 18;
         int shift = 1;
         // when
-        int test = Task7_CyclicBitShift.rotateLeft(value, shift);
+        int test = Task7CyclicBitShift.rotateLeft(value, shift);
         // then
         assertThat(test).isEqualTo(5);
     }
@@ -65,7 +65,7 @@ public class Task7CyclicBitShiftTest {
         int value = 17;
         int shift = 2;
         // when
-        int test = Task7_CyclicBitShift.rotateLeft(value, shift);
+        int test = Task7CyclicBitShift.rotateLeft(value, shift);
         // then
         assertThat(test).isEqualTo(6);
     }
@@ -76,7 +76,7 @@ public class Task7CyclicBitShiftTest {
         int value = 17;
         int shift = 2;
         // when
-        int test = Task7_CyclicBitShift.rotateLeft(value, shift);
+        int test = Task7CyclicBitShift.rotateLeft(value, shift);
         // then
         assertThat(test).isEqualTo(6);
     }
@@ -87,7 +87,7 @@ public class Task7CyclicBitShiftTest {
         int value = 8;
         int shift = 1;
         // when
-        int test = Task7_CyclicBitShift.rotateRight(value, shift);
+        int test = Task7CyclicBitShift.rotateRight(value, shift);
         // then
         assertThat(test).isEqualTo(4);
     }
@@ -98,7 +98,7 @@ public class Task7CyclicBitShiftTest {
         int value = 9;
         int shift = 2;
         // when
-        int test = Task7_CyclicBitShift.rotateRight(value, shift);
+        int test = Task7CyclicBitShift.rotateRight(value, shift);
         // then
         //1001 -> 1100->110
         assertThat(test).isEqualTo(6);

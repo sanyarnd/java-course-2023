@@ -2,7 +2,7 @@ package edu.hw1;
 
 import java.util.Arrays;
 
-public class Task6_Kaprekar {
+public class Task6Kaprekar {
     public static int getKaprekarSteps(int value) {
         /* recursive function returns the count of itself calls
            returns -1 if value == 1000 or isn't four-digit number or all digits are the same
@@ -14,7 +14,7 @@ public class Task6_Kaprekar {
             return -1;
         }
 
-        int lengthValue = Task2_CountDigits.getCountDigits(value);
+        int lengthValue = Task2CountDigits.getCountDigits(value);
         //split value to array
         int[] smallerArr = new int[lengthValue];
         for (int i = lengthValue - 1; -1 < i; i--) {

@@ -1,6 +1,6 @@
 package edu.hw1;
 
-public class Task3_InsertedArray {
+public class Task3InsertedArray {
     public static boolean isInsertable(int[] arr1, int[] arr2){
         if(arr1.length == 0 || arr2.length == 0)
             return false;

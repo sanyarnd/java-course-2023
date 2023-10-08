@@ -2,7 +2,7 @@ package edu.hw1;
 
 import static java.lang.Math.pow;
 
-public class Task7_CyclicBitShift {
+public class Task7CyclicBitShift {
     public static int getHighBit(int value) {
         int pos = 0;
         while ((int) pow(2, pos) <= value) {

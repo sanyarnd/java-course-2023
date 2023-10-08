@@ -11,7 +11,7 @@ public class Task6KaprekarTest {
         // given
         int value = -1234;
         // when
-        int test = Task6_Kaprekar.getKaprekarSteps(value);
+        int test = Task6Kaprekar.getKaprekarSteps(value);
         // then
         assertThat(test).isEqualTo(-1);
     }
@@ -21,7 +21,7 @@ public class Task6KaprekarTest {
         // given
         int value = 12345;
         // when
-        int test = Task6_Kaprekar.getKaprekarSteps(value);
+        int test = Task6Kaprekar.getKaprekarSteps(value);
         // then
         assertThat(test).isEqualTo(-1);
     }
@@ -31,7 +31,7 @@ public class Task6KaprekarTest {
         // given
         int value = 7777;
         // when
-        int test = Task6_Kaprekar.getKaprekarSteps(value);
+        int test = Task6Kaprekar.getKaprekarSteps(value);
         // then
         assertThat(test).isEqualTo(-1);
     }
@@ -41,7 +41,7 @@ public class Task6KaprekarTest {
         // given
         int value = 6621;
         // when
-        int test = Task6_Kaprekar.getKaprekarSteps(value);
+        int test = Task6Kaprekar.getKaprekarSteps(value);
         // then
         assertThat(test).isEqualTo(5);
     }
@@ -51,7 +51,7 @@ public class Task6KaprekarTest {
         // given
         int value = 6554;
         // when
-        int test = Task6_Kaprekar.getKaprekarSteps(value);
+        int test = Task6Kaprekar.getKaprekarSteps(value);
         // then
         assertThat(test).isEqualTo(4);
     }
@@ -61,7 +61,7 @@ public class Task6KaprekarTest {
         // given
         int value = 1234;
         // when
-        int test = Task6_Kaprekar.getKaprekarSteps(value);
+        int test = Task6Kaprekar.getKaprekarSteps(value);
         // then
         assertThat(test).isEqualTo(3);
     }
@@ -71,7 +71,7 @@ public class Task6KaprekarTest {
         // given
         int value = 6001;
         // when
-        int test = Task6_Kaprekar.getKaprekarSteps(value);
+        int test = Task6Kaprekar.getKaprekarSteps(value);
         // then
         assertThat(test).isEqualTo(7);
     }

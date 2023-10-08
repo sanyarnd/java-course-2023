@@ -1,6 +1,6 @@
 package edu.hw1;
 
-public class Task2_CountDigits {
+public class Task2CountDigits {
     public static int getCountDigits(int value){
         if(value == 0) return 1;
 

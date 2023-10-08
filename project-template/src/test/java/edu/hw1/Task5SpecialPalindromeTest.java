@@ -12,7 +12,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 12321;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -22,7 +22,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 11211230;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -32,7 +32,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 13001102;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -42,7 +42,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 23336014;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -52,7 +52,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 44;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -62,7 +62,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 8;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(false);
     }
@@ -73,7 +73,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 2447;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(false);
     }
@@ -84,7 +84,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 11211230 ;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }
@@ -94,7 +94,7 @@ public class Task5SpecialPalindromeTest {
         // given
         int value = 77000095 ;
         // when
-        boolean test = Task5_SpecialPalindrome.isSpecialPalindrome(value);
+        boolean test = Task5SpecialPalindrome.isSpecialPalindrome(value);
         // then
         assertThat(test).isEqualTo(true);
     }

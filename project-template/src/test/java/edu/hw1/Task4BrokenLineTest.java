@@ -12,7 +12,7 @@ public class Task4BrokenLineTest {
         // given
         String test = "";
         // when
-        String answer = Task4_BrokenLine.getFixedLine(test);
+        String answer = Task4BrokenLine.getFixedLine(test);
         // then
         assertThat(answer).isEqualTo("");
     }
@@ -22,7 +22,7 @@ public class Task4BrokenLineTest {
         // given
         String test = "j";
         // when
-        String answer = Task4_BrokenLine.getFixedLine(test);
+        String answer = Task4BrokenLine.getFixedLine(test);
         // then
         assertThat(answer).isEqualTo("j");
     }
@@ -32,7 +32,7 @@ public class Task4BrokenLineTest {
         // given
         String test = "io";
         // when
-        String answer = Task4_BrokenLine.getFixedLine(test);
+        String answer = Task4BrokenLine.getFixedLine(test);
         // then
         assertThat(answer).isEqualTo("oi");
     }
@@ -42,7 +42,7 @@ public class Task4BrokenLineTest {
         // given
         String test = "hTsii  s aimex dpus rtni.g";
         // when
-        String answer = Task4_BrokenLine.getFixedLine(test);
+        String answer = Task4BrokenLine.getFixedLine(test);
         // then
         assertThat(answer).isEqualTo("This is a mixed up string.");
     }
