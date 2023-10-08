@@ -8,11 +8,6 @@ public final class Task1 {
 
     private static final Logger LOGGER = Logger.getLogger(Task1.class.getName());
 
-    @SuppressWarnings("uncommentedmain")
-    public static void main(String[] args) {
-        printHelloWorld();
-    }
-
     public static void printHelloWorld() {
         LOGGER.info("Привет, мир!");
     }

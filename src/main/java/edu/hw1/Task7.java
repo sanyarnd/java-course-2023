@@ -1,18 +1,10 @@
 package edu.hw1;
 
 import java.util.Arrays;
-import java.util.logging.Logger;
 
-@SuppressWarnings({"uncommentedmain", "checkstyle:magicnumber"})
+@SuppressWarnings({"checkstyle:magicnumber"})
 public final class Task7 {
     private Task7() {
-    }
-
-    private static final Logger LOGGER = Logger.getLogger(Task7.class.getName());
-
-    public static void main(String[] args) {
-        LOGGER.info(countK(3524) + "\n"); // 3
-        LOGGER.info(countK(6621) + "\n"); // 0
     }
 
     public static boolean isValidInput(int number) {

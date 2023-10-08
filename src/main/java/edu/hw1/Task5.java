@@ -1,16 +1,7 @@
 package edu.hw1;
 
-import java.util.logging.Logger;
-
 public final class Task5 {
     private Task5() {
-    }
-
-    private static final Logger LOGGER = Logger.getLogger(Task5.class.getName());
-
-    @SuppressWarnings({"uncommentedmain", "checkstyle:magicnumber"})
-    public static void main(String[] args) {
-        LOGGER.info(fixString("123456")); // 214365
     }
 
     public static String fixString(String input) {

@@ -1,18 +1,7 @@
 package edu.hw1;
 
-import java.util.logging.Logger;
-
 public final class Task4 {
     private Task4() {
-    }
-
-    private static final Logger LOGGER = Logger.getLogger(Task4.class.getName());
-
-    @SuppressWarnings({"uncommentedmain", "checkstyle:magicnumber"})
-    public static void main(String[] args) {
-        int[] array1 = {1, 2, 3, 4};
-        int[] array2 = {0, 6};
-        LOGGER.info("isNestable([1, 2, 3, 4], [0, 6]) -> " + isNestable(array1, array2)); // true
     }
 
     public static boolean isNestable(int[] array1, int[] array2) {

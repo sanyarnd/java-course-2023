@@ -1,19 +1,9 @@
 package edu.hw1;
 
-import java.util.logging.Logger;
-
 public final class Task6 {
     private Task6() {
     }
 
-    private static final Logger LOGGER = Logger.getLogger(Task6.class.getName());
-
-    @SuppressWarnings({"uncommentedmain", "checkstyle:magicnumber"})
-    public static void main(String[] args) {
-        LOGGER.info(String.valueOf(isPalindromeDescendant("11211230"))); // true
-    }
-
-    @SuppressWarnings("checkstyle:magicnumber")
     public static boolean isPalindromeDescendant(String number) {
         String num = number;
         while (num.length() > 1) {
