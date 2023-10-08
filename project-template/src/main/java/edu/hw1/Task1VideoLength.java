@@ -3,7 +3,10 @@ package edu.hw1;
 import java.util.Objects;
 
 final class Task1VideoLength {
-    final int minute = 60;
+    private Task1VideoLength() {
+    }
+
+    final public static int ONE_MINUTE = 60;
 
     public static int getSeconds(String time) {
         Objects.requireNonNull(time);
@@ -12,19 +15,19 @@ final class Task1VideoLength {
         if (strTime.length != 2) {
             return -1;
         }
-        int min;
-        int sec;
+        int minutes;
+        int seconds;
 
         try {
-            min = Integer.parseInt(strTime[0]);
-            sec = Integer.parseInt(strTime[1]);
-            if (min < 0 || sec >= minute || sec < 0) {
+            minutes = Integer.parseInt(strTime[0]);
+            seconds = Integer.parseInt(strTime[1]);
+            if (minutes < 0 || seconds >= ONE_MINUTE || seconds < 0) {
                 return -1;
             }
         } catch (Exception e) {
             return -1;
         }
 
-        return min * minute + sec;
+        return minutes * ONE_MINUTE + seconds;
     }
 }
