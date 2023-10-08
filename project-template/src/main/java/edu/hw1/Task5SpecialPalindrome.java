@@ -4,24 +4,24 @@ final class Task5SpecialPalindrome {
     private Task5SpecialPalindrome() {
     }
 
-    final static public int TEN = 10;
-
+    @SuppressWarnings("MagicNumber")
     public static boolean isPalindrome(int number) {
         int notOriginalNumber = number;
         int reversedNumber = 0;
 
         while (notOriginalNumber > 0) {
-            int lastDigit = notOriginalNumber % TEN;
-            reversedNumber = reversedNumber * TEN + lastDigit;
-            notOriginalNumber /= TEN;
+            int lastDigit = notOriginalNumber % 10;
+            reversedNumber = reversedNumber * 10 + lastDigit;
+            notOriginalNumber /= 10;
         }
 
         return number == reversedNumber;
     }
 
+    @SuppressWarnings("MagicNumber")
     public static boolean isSpecialPalindrome(int originalValue) {
         int value = originalValue;
-        if (value <= TEN) {
+        if (value <= 10) {
             return false;
         }
         if (isPalindrome(value)) {
@@ -33,8 +33,8 @@ final class Task5SpecialPalindrome {
         int lengthValue = Task2CountDigits.getCountDigits(value);
         var split = new int[lengthValue];
         for (int i = lengthValue - 1; -1 < i; i--) {
-            split[i] = value % TEN;
-            value /= TEN;
+            split[i] = value % 10;
+            value /= 10;
         }
 
         int newValue = 0;
@@ -44,9 +44,9 @@ final class Task5SpecialPalindrome {
             int add = split[i] + split[i + 1];
 
             if (add == 0) {
-                newValue *= TEN;
+                newValue *= 10;
             } else {
-                newValue += add * (int) Math.pow(TEN, Task2CountDigits.getCountDigits(newValue));
+                newValue += add * (int) Math.pow(10, Task2CountDigits.getCountDigits(newValue));
             }
         }
         return isSpecialPalindrome(newValue);
