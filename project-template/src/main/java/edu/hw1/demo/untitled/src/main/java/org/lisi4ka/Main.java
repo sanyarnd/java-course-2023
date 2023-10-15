@@ -1,4 +1,4 @@
-package org.lisi4ka;
+package edu.hw1.demo.untitled.src.main.java.org.lisi4ka;
 
 import org.lisi4ka.tasks.Task0;
 
