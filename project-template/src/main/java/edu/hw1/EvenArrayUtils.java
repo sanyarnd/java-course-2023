@@ -30,6 +30,7 @@ public final class EvenArrayUtils {
                 result[idx++] = number;
             }
         }
+        LOGGER.trace("result {}", result);
         return result;
     }
 
