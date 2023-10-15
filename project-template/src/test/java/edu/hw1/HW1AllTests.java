@@ -1,4 +1,4 @@
-package edu.hw1.demo.untitled.src.test.java;
+package edu.hw1;
 
 import org.junit.jupiter.api.Test;
 import org.lisi4ka.tasks.Task1;
@@ -12,7 +12,7 @@ import org.lisi4ka.tasks.Task8;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HW1_AllTests {
+class HW1AllTests {
     @Test
     void test1() {
         assertEquals(61, Task1.task1("1:01"));
