@@ -3,7 +3,7 @@ package edu.hw1;
 public class Task5 {
     public static boolean isPalindromeDescendant(int number) {
         StringBuilder num = new StringBuilder(Integer.toString(number));
-        StringBuilder reverseNumber = new StringBuilder();
+        StringBuilder reverseNumber;
 
         while (num.length() > 1) {
             reverseNumber = new StringBuilder(num);
