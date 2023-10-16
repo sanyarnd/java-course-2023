@@ -14,10 +14,7 @@ public class Task3 {
         int destinationArrayMaxVal = Arrays.stream(destinationArray).max().getAsInt();
         int destinationArrayMinVal = Arrays.stream(destinationArray).min().getAsInt();
 
-        if (targetArrMaxVal < destinationArrayMaxVal && targetArrMinVal > destinationArrayMinVal) {
-            return true;
-        }
-
-        return false;
+        // хотя скобки тут и не нужны, но, думаю, с ними лучше читается и смотрится выражение
+        return (targetArrMaxVal < destinationArrayMaxVal) && (targetArrMinVal > destinationArrayMinVal);
     }
 }
