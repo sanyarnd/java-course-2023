@@ -17,4 +17,14 @@ class Task2Test {
         assertEquals(Task2.countDigits(544), 3);
         assertEquals(Task2.countDigits(4666), 4);
     }
+
+    @Test void testCountDigitsIntMinValue() {
+        assertEquals(Task2.countDigits(Integer.MIN_VALUE), 10);
+        assertEquals(Task2.countDigits(-Integer.MIN_VALUE), 10);
+    }
+
+    @Test void testCountDigitsIntMaxValue() {
+        assertEquals(Task2.countDigits(Integer.MAX_VALUE), 10);
+        assertEquals(Task2.countDigits(-Integer.MAX_VALUE), 10);
+    }
 }

@@ -11,10 +11,12 @@ public class Task2 {
             return 1;
         }
 
-        if (number < 0) {
-            number *= -1;
+        int digCount = 0;
+        while (number != 0) {
+            digCount++;
+            number /= 10;
         }
 
-        return (int) (Math.log10(number) + 1);
+        return digCount;
     }
 }
