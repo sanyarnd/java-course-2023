@@ -11,11 +11,17 @@ class Task6Test {
         assertEquals(Task6.kaprekarSteps(1234), 3);
         assertEquals(Task6.kaprekarSteps(3524), 3);
         assertEquals(Task6.kaprekarSteps(6174), 0);
+        assertEquals(Task6.kaprekarSteps(1110), 5);
     }
 
     @Test public void testKaprekarStepsWithInvalidInput() {
         assertEquals(Task6.kaprekarSteps(9999), -1);
         assertEquals(Task6.kaprekarSteps(10000), -1);
+    }
+
+    @Test public void testСheckIfAllDigSame() {
+        assertEquals(Task6.checkIfAllDigSame(9999), true);
+        assertEquals(Task6.checkIfAllDigSame(1111), true);
     }
 
     @Test public void testSortNumber() {

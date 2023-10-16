@@ -5,7 +5,6 @@ import java.util.stream.Stream;
 
 public class Task6 {
     static final int TARGET_NUMBER = 6174;
-    static final int MAX_STEP_COUNT = 7;
 
     private Task6() {
     }
@@ -13,20 +12,30 @@ public class Task6 {
 //    public static void main(String[] args) {}
 
     public static int kaprekarSteps(int number) {
-        if (number > 1000 && number < 10000) {
+        if (number > 1000 && number < 10000 && !checkIfAllDigSame(number)) {
             return kaprekarStepsRec(number, 0);
         }
 
         return -1;
     }
 
+    public static boolean checkIfAllDigSame(int number) {
+        int lastDigit = number % 10;
+
+        while (number > 0) {
+            int digit = number % 10;
+            if (digit != lastDigit) {
+                return false;
+            }
+            number /= 10;
+        }
+
+        return true;
+    }
+
     public static int kaprekarStepsRec(int number, int step) {
         if (number == TARGET_NUMBER) {
             return step;
-        }
-
-        if (step > MAX_STEP_COUNT) {
-            return -1;
         }
 
         int smallNum = sortNumber(number, true);
@@ -43,7 +52,13 @@ public class Task6 {
             .map(Object::toString)
             .collect(Collectors.joining());
 
-        sortedNumberStr = isIncrOrder ? sortedNumberStr : new StringBuilder(sortedNumberStr).reverse().toString();
+        if (!isIncrOrder) {
+            sortedNumberStr = new StringBuilder(sortedNumberStr).reverse().toString();
+            if (sortedNumberStr.length() < 4){
+                sortedNumberStr += '0';
+            }
+        }
+
         return Integer.parseInt(sortedNumberStr);
     }
 }
