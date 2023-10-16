@@ -25,7 +25,7 @@ class Task7Test {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Task7.rotateRight(-8, 1);
         });
-        assertEquals(exception.getMessage(), Task7.negNumExceptMsg);
+        assertEquals(exception.getMessage(), Task7.NEG_NUM_EXCEPT_MSG);
     }
 
     @Test
@@ -33,6 +33,6 @@ class Task7Test {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             Task7.rotateLeft(-8, 1);
         });
-        assertEquals(exception.getMessage(), Task7.negNumExceptMsg);
+        assertEquals(exception.getMessage(), Task7.NEG_NUM_EXCEPT_MSG);
     }
 }

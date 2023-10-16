@@ -38,6 +38,6 @@ public class Task5 {
     }
 
     public static boolean checkPalindrome(String numStr) {
-        return numStr.equals(new StringBuilder(numStr).reverse().toString());
+        return numStr.contentEquals(new StringBuilder(numStr).reverse());
     }
 }

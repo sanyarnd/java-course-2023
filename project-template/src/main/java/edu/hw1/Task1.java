@@ -10,6 +10,7 @@ public class Task1 {
 //    }
 
     public static int getMovieLenSec(String movieLenStr) throws NumberFormatException {
+        final int secPerMin = 60;
         int minutes;
         int seconds;
 
@@ -21,8 +22,7 @@ public class Task1 {
             throw new NumberFormatException(ex.getMessage());
         }
 
-        if (seconds < 60 && seconds >= 0 && minutes >= 0) {
-            int secPerMin = 60;
+        if (seconds < secPerMin && seconds >= 0 && minutes >= 0) {
             return minutes * secPerMin + seconds;
         }
 

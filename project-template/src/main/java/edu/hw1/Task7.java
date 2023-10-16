@@ -3,7 +3,7 @@ package edu.hw1;
 import java.util.BitSet;
 
 public class Task7 {
-    static final String negNumExceptMsg = "Given number must be non-negative";
+    static final String NEG_NUM_EXCEPT_MSG = "Given number must be non-negative";
 
     private Task7() {
     }
@@ -12,7 +12,7 @@ public class Task7 {
 
     public static int rotateRight(int number, int shift) throws IllegalArgumentException {
         if (number < 0) {
-            throw new IllegalArgumentException(negNumExceptMsg);
+            throw new IllegalArgumentException(NEG_NUM_EXCEPT_MSG);
         }
 
         if (shift < 0) {
@@ -33,7 +33,7 @@ public class Task7 {
 
     public static int rotateLeft(int number, int shift) throws IllegalArgumentException {
         if (number < 0) {
-            throw new IllegalArgumentException(negNumExceptMsg);
+            throw new IllegalArgumentException(NEG_NUM_EXCEPT_MSG);
         }
 
         if (shift < 0) {

@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 
 public class Task6 {
     static final int TARGET_NUMBER = 6174;
+    static final int REQUIRED_DIG_LEN = 4;
 
     private Task6() {
     }
@@ -54,7 +55,7 @@ public class Task6 {
 
         if (!isIncrOrder) {
             sortedNumberStr = new StringBuilder(sortedNumberStr).reverse().toString();
-            if (sortedNumberStr.length() < 4){
+            if (sortedNumberStr.length() < REQUIRED_DIG_LEN) {
                 sortedNumberStr += '0';
             }
         }

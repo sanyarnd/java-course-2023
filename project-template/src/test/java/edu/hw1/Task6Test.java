@@ -3,6 +3,7 @@ package edu.hw1;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Task6Test {
     @Test public void testKaprekarStepsWithValidInput() {
@@ -19,9 +20,9 @@ class Task6Test {
         assertEquals(Task6.kaprekarSteps(10000), -1);
     }
 
-    @Test public void testСheckIfAllDigSame() {
-        assertEquals(Task6.checkIfAllDigSame(9999), true);
-        assertEquals(Task6.checkIfAllDigSame(1111), true);
+    @Test public void testCheckIfAllDigSame() {
+        assertTrue(Task6.checkIfAllDigSame(9999));
+        assertTrue(Task6.checkIfAllDigSame(1111));
     }
 
     @Test public void testSortNumber() {

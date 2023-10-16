@@ -10,7 +10,7 @@ public class Task3 {
 
     public static boolean isNestable(int[] targetArr, int[] destinationArray) {
         // эти случаи не прописаны в услових задания, поэтому вот так
-        if (targetArr.length < 2 || destinationArray.length < 2){
+        if (targetArr.length < 2 || destinationArray.length < 2) {
             return false;
         }
 
