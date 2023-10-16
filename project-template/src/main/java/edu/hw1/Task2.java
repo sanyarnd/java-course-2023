@@ -1,8 +1,10 @@
 package edu.hw1;
 
 public class Task2 {
-    public static void main() {
+    private Task2() {
     }
+
+//    public static void main() {}
 
     public static int countDigits(int number) {
         if (number == 0) {

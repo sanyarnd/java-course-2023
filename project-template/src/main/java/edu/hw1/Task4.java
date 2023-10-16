@@ -4,8 +4,7 @@ public class Task4 {
     private Task4() {
     }
 
-    public static void main(String[] args) {
-    }
+//    public static void main(String[] args) {}
 
     public static String fixString(String brokenString) {
         char[] charArray = brokenString.toCharArray();

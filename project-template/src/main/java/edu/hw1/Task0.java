@@ -9,9 +9,9 @@ public class Task0 {
     private Task0() {
     }
 
-    public static void main(String[] args) {
-        printHello();
-    }
+//    public static void main(String[] args) {
+//        printHello();
+//    }
 
     private static void printHello() {
         LOGGER.info("Привет, мир!");

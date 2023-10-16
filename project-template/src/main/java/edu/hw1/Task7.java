@@ -3,12 +3,12 @@ package edu.hw1;
 import java.util.BitSet;
 
 public class Task7 {
-    final static String negNumExceptMsg = "Given number must be non-negative";
+    static final String negNumExceptMsg = "Given number must be non-negative";
+
     private Task7() {
     }
 
-    public static void main(String[] args) {
-    }
+//    public static void main(String[] args) {}
 
     public static int rotateRight(int number, int shift) throws IllegalArgumentException {
         if (number < 0) {

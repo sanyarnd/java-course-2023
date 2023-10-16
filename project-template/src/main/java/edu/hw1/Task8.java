@@ -9,8 +9,7 @@ public class Task8 {
     private Task8() {
     }
 
-    public static void main(String[] args) {
-    }
+//    public static void main(String[] args) {}
 
     public static boolean knightBoardCapture(int[][] board) {
         for (int i = 0; i < ROWS; i++) {

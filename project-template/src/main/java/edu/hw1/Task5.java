@@ -4,8 +4,7 @@ public class Task5 {
     private Task5() {
     }
 
-    public static void main(String[] args) {
-    }
+//    public static void main(String[] args) {}
 
     public static boolean isPalindromeDescendant(int number) {
         String numStr = String.valueOf(number);

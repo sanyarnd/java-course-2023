@@ -4,10 +4,10 @@ public class Task1 {
     private Task1() {
     }
 
-    public static void main(String[] args) {
-        String movieLenStr = "01:13";
-        int lenSec = getMovieLenSec(movieLenStr);
-    }
+//    public static void main(String[] args) {
+//        String movieLenStr = "01:13";
+//        int lenSec = getMovieLenSec(movieLenStr);
+//    }
 
     public static int getMovieLenSec(String movieLenStr) throws NumberFormatException {
         int minutes;

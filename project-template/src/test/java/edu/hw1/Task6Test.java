@@ -1,24 +1,25 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Task6Test {
     @Test public void testKaprekarStepsWithValidInput() {
-        assertThat(Task6.kaprekarSteps(6621)).isEqualTo(5);
-        assertThat(Task6.kaprekarSteps(6554)).isEqualTo(4);
-        assertThat(Task6.kaprekarSteps(1234)).isEqualTo(3);
-        assertThat(Task6.kaprekarSteps(3524)).isEqualTo(3);
-        assertThat(Task6.kaprekarSteps(6174)).isEqualTo(0);
+        assertEquals(Task6.kaprekarSteps(6621), 5);
+        assertEquals(Task6.kaprekarSteps(6554), 4);
+        assertEquals(Task6.kaprekarSteps(1234), 3);
+        assertEquals(Task6.kaprekarSteps(3524), 3);
+        assertEquals(Task6.kaprekarSteps(6174), 0);
     }
 
     @Test public void testKaprekarStepsWithInvalidInput() {
-        assertThat(Task6.kaprekarSteps(9999)).isEqualTo(-1);
-        assertThat(Task6.kaprekarSteps(10000)).isEqualTo(-1);
+        assertEquals(Task6.kaprekarSteps(9999), -1);
+        assertEquals(Task6.kaprekarSteps(10000), -1);
     }
 
     @Test public void testSortNumber() {
-        assertThat(Task6.sortNumber(3254, true)).isEqualTo(2345);
-        assertThat(Task6.sortNumber(3254, false)).isEqualTo(5432);
+        assertEquals(Task6.sortNumber(3254, true), 2345);
+        assertEquals(Task6.sortNumber(3254, false), 5432);
     }
 }

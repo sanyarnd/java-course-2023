@@ -4,14 +4,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Task6 {
-    final static int TARGET_NUMBER = 6174;
-    final static int MAX_STEP_COUNT = 7;
+    static final int TARGET_NUMBER = 6174;
+    static final int MAX_STEP_COUNT = 7;
 
     private Task6() {
     }
 
-    public static void main(String[] args) {
-    }
+//    public static void main(String[] args) {}
 
     public static int kaprekarSteps(int number) {
         if (number > 1000 && number < 10000) {
