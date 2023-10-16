@@ -17,5 +17,7 @@ class Task3Test {
         assertFalse(Task3.isNestable(new int[] {1, 2, 3, 6}, new int[] {1, 2, 3, 6}));
         assertFalse(Task3.isNestable(new int[] {9, 9, 8}, new int[] {8, 9}));
         assertFalse(Task3.isNestable(new int[] {1, 2, 3, 4}, new int[] {2, 3}));
+        assertFalse(Task3.isNestable(new int[] {}, new int[] {}));
+        assertFalse(Task3.isNestable(new int[] {}, new int[] {1}));
     }
 }

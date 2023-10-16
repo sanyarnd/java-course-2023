@@ -9,6 +9,11 @@ public class Task3 {
 //    public static void main(String[] args) {}
 
     public static boolean isNestable(int[] targetArr, int[] destinationArray) {
+        // эти случаи не прописаны в услових задания, поэтому вот так
+        if (targetArr.length < 2 || destinationArray.length < 2){
+            return false;
+        }
+
         int targetArrMaxVal = Arrays.stream(targetArr).max().getAsInt();
         int targetArrMinVal = Arrays.stream(targetArr).min().getAsInt();
         int destinationArrayMaxVal = Arrays.stream(destinationArray).max().getAsInt();
