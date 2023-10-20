@@ -4,7 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Task0 {
+
+    private Task0() {
+        // constructor
+    }
+
     private final static Logger LOGGER = LogManager.getLogger();
+
     public static void helloInConsole() {
         LOGGER.info("Привет, мир!");
     }

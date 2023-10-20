@@ -43,4 +43,30 @@ public class Task6Test {
         // then
         assertEquals(result, 3);
     }
+
+    @Test
+    @DisplayName("3333 -> -1")
+    void test4() {
+        // given
+        int digit = 3333;
+
+        // when
+        int result = Task6.countK(digit);
+
+        // then
+        assertEquals(result, -1);
+    }
+
+    @Test
+    @DisplayName("23 -> -1")
+    void test5() {
+        // given
+        int digit = 23;
+
+        // when
+        int result = Task6.countK(digit);
+
+        // then
+        assertEquals(result, -1);
+    }
 }

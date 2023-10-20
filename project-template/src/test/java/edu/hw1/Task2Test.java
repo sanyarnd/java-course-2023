@@ -43,4 +43,30 @@ public class Task2Test {
         // then
         assertEquals(result, 1);
     }
+
+    @Test
+    @DisplayName("Число -345 -> 3 цифры")
+    void test4() {
+        // given
+        int digit = -345;
+
+        // when
+        int result = Task2.countDigits(digit);
+
+        // then
+        assertEquals(result, 3);
+    }
+
+    @Test
+    @DisplayName("Число -1234 -> 5 цифр")
+    void test5() {
+        // given
+        int digit = -12345;
+
+        // when
+        int result = Task2.countDigits(digit);
+
+        // then
+        assertEquals(result, 5);
+    }
 }

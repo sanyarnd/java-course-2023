@@ -70,4 +70,17 @@ public class Task5Test {
         // then
         assertFalse(result);
     }
+
+    @Test
+    @DisplayName("1 -> false")
+    void test6() {
+        // given
+        int digit = 1;
+
+        // when
+        boolean result = Task5.isPalindromeDescendant(digit);
+
+        // then
+        assertFalse(result);
+    }
 }
