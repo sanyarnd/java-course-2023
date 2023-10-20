@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Collections;
 public class Task2 {
-    public static Boolean a(Integer[] first_array, Integer[] second_array) {
+    public static Boolean isNestable(Integer[] first_array, Integer[] second_array) {
         Arrays.sort(first_array);
         Arrays.sort(second_array);
 
