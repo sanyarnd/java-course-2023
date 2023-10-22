@@ -7,8 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Test6 {
 
     @Test
-    void testKaprekar() {
-        assertThat(Task6.countK(6174)).isEqualTo(0);
+    void testKaprekar() {assertThat(Task6.countK(6174)).isEqualTo(0);
     }
 
     @Test
