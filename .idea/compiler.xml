@@ -6,15 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="java-tinkoff" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="essentials" target="19" />
+      <module name="java-tinkoff" target="19" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="essentials" options="-parameters -Xlint:all" />
+      <module name="java-tinkoff" options="-parameters -Xlint:all" />
     </option>
   </component>
 </project>
