@@ -2,11 +2,15 @@ package edu.hw1;
 
 import java.util.Arrays;
 
-public class task6 {
-    public static int K(int x) {
+public class Task6 {
+    private Task6() {
+    }
+
+    public static int k(int x) {
         var d = (Integer.toString(x)).toCharArray();
         Arrays.sort(d);
-        StringBuilder s1 = new StringBuilder(), s2 = new StringBuilder();
+        StringBuilder s1 = new StringBuilder();
+        StringBuilder s2 = new StringBuilder();
         for (char i : d) {
             s1.append(i);
         }
@@ -16,10 +20,12 @@ public class task6 {
         return Integer.parseInt(s2.toString()) - Integer.parseInt(s1.toString());
     }
 
+    final static int MAGICNUM = 6174;
+
     public static int countK(int x) {
-        if (x == 6174) {
+        if (x == MAGICNUM) {
             return 0;
         }
-        return countK(K(x)) + 1;
+        return countK(k(x)) + 1;
     }
 }

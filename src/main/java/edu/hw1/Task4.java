@@ -1,6 +1,10 @@
 package edu.hw1;
 
-public class task4 {
+public class Task4 {
+
+    private Task4() {
+    }
+
     public static String fixString(String s) {
         int n = s.length();
         StringBuilder ans = new StringBuilder();

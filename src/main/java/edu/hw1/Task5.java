@@ -1,6 +1,9 @@
 package edu.hw1;
 
-public class task5 {
+public class Task5 {
+    private Task5() {
+    }
+
     public static boolean isPalindrome(String x) {
         int n = x.length();
         StringBuilder s = new StringBuilder();

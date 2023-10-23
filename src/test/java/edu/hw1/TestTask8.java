@@ -38,19 +38,19 @@ public class TestTask8 {
     @Test
     @DisplayName("Test1, input pos1 output true")
     void test1(){
-        var isGood = task8.knightBoardCapture(pos1);
+        boolean isGood = Task8.knightBoardCapture(pos1);
         assertThat(isGood).isEqualTo(true);
     }
     @Test
     @DisplayName("Test2, input pos2 output false")
     void test2(){
-        var isGood = task8.knightBoardCapture(pos2);
+        boolean isGood = Task8.knightBoardCapture(pos2);
         assertThat(isGood).isEqualTo(false);
     }
     @Test
     @DisplayName("Test3, input pos3 output false")
     void test3(){
-        var isGood = task8.knightBoardCapture(pos3);
+        boolean isGood = Task8.knightBoardCapture(pos3);
         assertThat(isGood).isEqualTo(false);
     }
 }
