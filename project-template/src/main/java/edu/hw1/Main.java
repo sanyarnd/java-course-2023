@@ -47,8 +47,9 @@ public class Main {
         String[] parts = str.split(":");
         int min = Integer.parseInt(parts[0]);
         int sec = Integer.parseInt(parts[1]);
-        if (sec >= 60)
+        if (sec >= 60) {
             return -1;
+        }
         else
             return min * 60 + sec;
     }
@@ -71,10 +72,10 @@ public class Main {
      * 3.
      */
     public static boolean thirdTask(int[] first, int[] second) {
-        Integer minFirst = (Integer) Arrays.stream(first).min().orElse(0);
-        Integer minSecond = (Integer) Arrays.stream(second).min().orElse(0);
-        Integer maxFirst = (Integer) Arrays.stream(first).max().orElse(0);
-        Integer maxSecond = (Integer) Arrays.stream(second).max().orElse(0);
+        int minFirst = (int) Arrays.stream(first).min().orElse(0);
+        int minSecond = (int) Arrays.stream(second).min().orElse(0);
+        int maxFirst = (int) Arrays.stream(first).max().orElse(0);
+        int maxSecond = (int) Arrays.stream(second).max().orElse(0);
         if (minSecond <= minFirst && maxSecond >= maxFirst)
             return true;
         else
@@ -129,14 +130,14 @@ public class Main {
         if (number == 6174)
             return count;
         else {
-            Integer[] array = new Integer[4];
+            int[] array = new int[4];
             for (int i = 0; i < 4; i++) {
                 array[i] = number % 10;
                 number /= 10;
             }
             Arrays.sort(array);
             int order = array[0] * 1000 + array[1] * 100 + array[2] * 10 + array[3];
-            Arrays.sort(array, Collections.reverseOrder());
+            Arrays.sort(array);
             int reorder = array[0] * 1000 + array[1] * 100 + array[2] * 10 + array[3];
             count++;
             return sixth(Math.abs(order - reorder), count);
