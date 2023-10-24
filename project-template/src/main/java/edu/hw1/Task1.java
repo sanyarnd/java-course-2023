@@ -1,15 +1,15 @@
 package edu.hw1;
 
 public class Task1 {
+    private static final int secInMinute = 60;
 
     private Task1() {
 
     }
 
     public static int minutesToSeconds(String time) {
-        final int secInMinute = 60;
         String[] parts = time.split(":");
-        if ((!time.contains(":")) || (parts[0].isEmpty()) || (parts[1].isEmpty())) {
+        if ((!time.contains(":")) || (time.contains("-")) || (parts[0].isEmpty()) || (parts[1].isEmpty())) {
             return -1;
         }
         int min = Integer.parseInt(parts[0]);
