@@ -1,6 +1,6 @@
 package edu.hw1;
 
-public class task5 {
+public class Task5 {
     public static boolean isPalindromeDescendant(int number){
         String numberString = String.valueOf(number);
         while(numberString.length() > 1){

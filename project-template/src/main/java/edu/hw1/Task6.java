@@ -2,7 +2,7 @@ package edu.hw1;
 
 import java.util.Arrays;
 
-public class task6 {
+public class Task6 {
     public static int countK(int number){
         if (number == 6174) {
             return 0;

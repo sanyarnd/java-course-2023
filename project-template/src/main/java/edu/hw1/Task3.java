@@ -1,6 +1,6 @@
 package edu.hw1;
 
-public class task3 {
+public class Task3 {
     public static boolean isNestable(int[] arr1, int[] arr2){
         int minArr1 = Integer.MAX_VALUE;
         int maxArr1 = Integer.MIN_VALUE;

@@ -1,6 +1,6 @@
 package edu.hw1;
 
-public class task1 {
+public class Task1 {
     public static int minutesToSeconds(String length) {
         String[] parts = length.split(":");
         int minutes = Integer.parseInt(parts[0]);

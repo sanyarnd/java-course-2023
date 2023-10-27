@@ -1,17 +1,20 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import static edu.hw1.Main.countDigits;
-import static edu.hw1.Main.countK;
-import static edu.hw1.Main.fixString;
-import static edu.hw1.Main.isNestable;
-import static edu.hw1.Main.isPalindromeDescendant;
-import static edu.hw1.Main.knightBoardCapture;
-import static edu.hw1.Main.minutesToSeconds;
-import static edu.hw1.Main.rotateLeft;
-import static edu.hw1.Main.rotateRight;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import java.util.stream.Stream;
+import static edu.hw1.Task1.minutesToSeconds;
+import static edu.hw1.Task2.countDigits;
+import static edu.hw1.Task3.isNestable;
+import static edu.hw1.Task4.fixString;
+import static edu.hw1.Task5.isPalindromeDescendant;
+import static edu.hw1.Task6.countK;
+import static edu.hw1.Task7.rotateRight;
+import static edu.hw1.Task7.rotateLeft;
+import static edu.hw1.Task8.knightBoardCapture;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import org.junit.jupiter.params.provider.Arguments;
 
 public class SampleTest {
 //    @Test
@@ -29,126 +32,134 @@ public class SampleTest {
 //            .hasSize(2);
 //    }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("data_for_minutesToSeconds")
     @DisplayName("Длина видео")
-    void Task1() {
-        String s1 = "01:60";
-        int expRes1 = -1;
-        String s2 = "01:59";
-        int expRes2 = 119;
+    void minutesToSeconds_validInputString_successTest(String input, int res) {
+        int result1 = minutesToSeconds(input);
 
-        int result1 = minutesToSeconds(s1);
-        int result2 = minutesToSeconds(s2);
-
-        assertThat(result1).isEqualTo(expRes1);
-        assertThat(result2).isEqualTo(expRes2);
+        assertThat(result1).isEqualTo(res);
+    }
+    private static Stream<Arguments> data_for_minutesToSeconds() {
+        return Stream.of(
+            Arguments.of("01:60", -1),
+            Arguments.of("01:59", 119)
+        );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("data_for_countDigits")
     @DisplayName("Количество цифр")
-    void Task2() {
-        int num1 = -1;
-        int expRes1 = 1;
-        int num2 = 999999999;
-        int expRes2 = 9;
+    void countDigits_validInputNumbers_successTest(int input, int res) {
+        int result1 = countDigits(input);
 
-        int result1 = countDigits(num1);
-        int result2 = countDigits(num2);
-
-        assertThat(result1).isEqualTo(expRes1);
-        assertThat(result2).isEqualTo(expRes2);
+        assertThat(result1).isEqualTo(res);
+    }
+    private static Stream<Arguments> data_for_countDigits() {
+        return Stream.of(
+            Arguments.of(-1, 1),
+            Arguments.of(999999999, 9)
+        );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("data_for_isNestable")
     @DisplayName("Вложенный массив")
-    void Task3() {
-        int[] array1_1 = {1, 1, 1, 1};
-        int[] array2_1 = {1, 1};
-        boolean expRes1 = false;
-        int[] array1_2 = {8, 8, 8, 8};
-        int[] array2_2 = {8, 8, 9, 9, 7};
-        boolean expRes2 = true;
+    void isNestable_validInputNumbersMas_successTest(int[] array1, int[] array2, boolean res) {
+        boolean result = isNestable(array1, array2);
 
-        boolean result1 = isNestable(array1_1, array2_1);
-        boolean result2 = isNestable(array1_2, array2_2);
-
-        assertThat(result1).isEqualTo(expRes1);
-        assertThat(result2).isEqualTo(expRes2);
+        assertThat(result).isEqualTo(res);
     }
-    @Test
+    private static Stream<Arguments> data_for_isNestable() {
+        return Stream.of(
+            Arguments.of(new int[]{1, 1, 1, 1}, new int[]{1, 1}, false),
+            Arguments.of(new int[]{8, 8, 8, 8}, new int[]{8, 8, 9, 9, 7}, true)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("data_for_fixString")
     @DisplayName("Сломанная строка")
-    void Task4() {
-        String str1 = "1111";
-        char[] arr1 = str1.toCharArray();
-        String strEes1 = "1111";
-        char[] expRes1 = strEes1.toCharArray();
+    void fixString_validInputString_successTest(String input, String res) {
+        char[] arr = input.toCharArray();
+        char[] expRes = res.toCharArray();
 
-        String str2 = "ebn ci e";
-        char[] arr2 = str2.toCharArray();
-        String strEes2 = "be nice ";
-        char[] expRes2 = strEes2.toCharArray();
+        char[] result = fixString(arr);
 
-        char[] result1 = fixString(arr1);
-        char[] result2 = fixString(arr2);
-
-        assertThat(result1).isEqualTo(expRes1);
-        assertThat(result2).isEqualTo(expRes2);
+        assertThat(result).isEqualTo(expRes);
     }
 
-    @Test
+    private static Stream<Arguments> data_for_fixString() {
+        return Stream.of(
+            Arguments.of("1111", "1111"),
+            Arguments.of("ebn ci e", "be nice ")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("data_for_isPalindromeDescendant")
     @DisplayName("Особый палиндром")
-    void Task5() {
-        int num1 = 112232211;
-        boolean expRes1 = true;
+    void isPalindromeDescendant_validInputNumbers_successTest(int input, boolean res) {
+        boolean result = isPalindromeDescendant(input);
 
-        int num2 = 696969;
-        boolean expRes2 = true;
-
-        boolean result1 = isPalindromeDescendant(num1);
-        boolean result2 = isPalindromeDescendant(num2);
-
-        assertThat(result1).isEqualTo(expRes1);
-        assertThat(result2).isEqualTo(expRes2);
+        assertThat(result).isEqualTo(res);
     }
 
-    @Test
+    private static Stream<Arguments> data_for_isPalindromeDescendant() {
+        return Stream.of(
+            Arguments.of(112232211, true),
+            Arguments.of(696969, true)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("data_for_countK")
     @DisplayName("Постоянная Капрекара")
-    void Task6() {
-        int numForK1 = 9865;
-        int expRes1 = 2;
+    void countK_validInputNumbers_successTest(int input, int res) {
+        int result = countK(input);
 
-        int numForK2 = 1012;
-        int expRes2 = 4;
-
-        int result1 = countK(numForK1);
-        int result2 = countK(numForK2);
-
-        assertThat(result1).isEqualTo(expRes1);
-        assertThat(result2).isEqualTo(expRes2);
+        assertThat(result).isEqualTo(res);
     }
 
-    @Test
+    private static Stream<Arguments> data_for_countK() {
+        return Stream.of(
+            Arguments.of(9865, 2),
+            Arguments.of(1012, 4)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("data_for_rotate")
     @DisplayName("Циклический битовый сдвиг")
-    void Task7() {
-        int n1 = 8;
-        int shift1 = 3;
-        int expRes1 = 1;
+    void rotate_validInputNumbersAndShifts_successTest(int input, int shift, int res, boolean rotate) {
+        int result = 0;
 
-        int n2 = 16;
-        int shift2 = 4;
-        int expRes2 = 8;
+        if(rotate) {
+            result = rotateRight(input, shift);
+        }else {
+            result = rotateLeft(input, shift);
+        }
 
-        int result1 = rotateRight(n1, shift1);
-        int result2 = rotateLeft(n2, shift2);
-
-        assertThat(result1).isEqualTo(expRes1);
-        assertThat(result2).isEqualTo(expRes2);
+        assertThat(result).isEqualTo(res);
+    }
+    private static Stream<Arguments> data_for_rotate() {
+        return Stream.of(
+            Arguments.of(8, 3, 1, true),
+            Arguments.of(16, 4, 8, false)
+        );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("data_for_knightBoardCapture")
     @DisplayName("Кони на доске")
-    void Task8() {
-        int[][] board1 = {
+    void knightBoardCapture_validInputNumbersAndShifts_successTest(int[][] input, boolean res) {
+        boolean result = knightBoardCapture(input);
+
+        assertThat(result).isEqualTo(res);
+    }
+    private static Stream<Arguments> data_for_knightBoardCapture() {
+        return Stream.of(
+            Arguments.of(new int[][]{
             {0, 0, 0, 1, 0, 0, 0, 0},
             {0, 0, 0, 0, 1, 0, 0, 0},
             {0, 1, 0, 0, 0, 1, 0, 0},
@@ -157,10 +168,8 @@ public class SampleTest {
             {0, 0, 0, 0, 0, 0, 0, 0},
             {0, 1, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 1, 0, 0, 0}
-        };
-        boolean expRes1 = true;
-
-        int[][] board2 = {
+        }, true),
+            Arguments.of(new int[][]{
             {1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 0, 0, 0, 0, 1, 1},
@@ -169,13 +178,7 @@ public class SampleTest {
             {1, 0, 0, 0, 0, 0, 1, 1},
             {1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1, 1, 1, 1}
-        };
-        boolean expRes2 = false;
-
-        boolean result1 = knightBoardCapture(board1);
-        boolean result2 = knightBoardCapture(board2);
-
-        assertThat(result1).isEqualTo(expRes1);
-        assertThat(result2).isEqualTo(expRes2);
+        }, false)
+        );
     }
 }
