@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ConTest {
+public class hw2_task3_Test {
     private static final int RANGE_TEST_ITERATIONS = 100;
 
     @Test

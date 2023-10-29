@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class ParamTest {
+public class hw2_task2_Test {
     static Arguments[] rectangles() {
         return new Arguments[]{
                 Arguments.of(new Rectangle()),

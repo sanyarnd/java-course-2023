@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class ExprTest {
+public class hw2_task1_Test {
     @Test
     @DisplayName("Тест на валидность приведенного в задании примера")
     void valideRequiedCode() {

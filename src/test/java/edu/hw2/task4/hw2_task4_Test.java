@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class WhoIsCallingTest {
+public class hw2_task4_Test {
     @Test
     @DisplayName("Класс, вызвавший функию")
     void calledClass() {
