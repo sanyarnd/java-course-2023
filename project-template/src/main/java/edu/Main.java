@@ -1,25 +1,32 @@
-package edu.hw1;
+package edu;
 
+import edu.hw1.Task1;
+import edu.hw1.Task2;
+import edu.hw1.Task3;
+import edu.hw1.Task4;
+import edu.hw1.Task5;
+import edu.hw1.Task6;
+import edu.hw1.Task7;
+import edu.hw1.Task8;
+import edu.hw2.task1.Addition;
+import edu.hw2.task1.Constant;
+import edu.hw2.task1.Exponent;
+import edu.hw2.task1.Expr;
+import edu.hw2.task1.Multiplication;
+import edu.hw2.task1.Negate;
+import edu.hw2.task4.CallingInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import static edu.hw2.task4.CallingInfo.callingInfo;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public final class Main {
     private final static Logger LOGGER = LogManager.getLogger();
 
-    private Main() {
-    }
+    private Main() {}
 
-    public static void main(String[] args) {
-        //task0
-//        LOGGER.info("Hello and welcome!");
-//        for (int i = 0; i <= 2; i++) {
-//
-//            LOGGER.info("i = {}", i);
-//        }
-
-        //task1
+    public static void Hw1(){
         Task1 task1 = new Task1();
         String length = "01:00";
         int totalSeconds = task1.minutesToSeconds(length);
@@ -146,5 +153,26 @@ public final class Main {
             {1, 0, 0, 0, 0, 0, 0, 0}
         };
         System.out.println(task8.knightBoardCapture(board2));
+    }
+
+
+    public static void main(String[] args) {
+        //Hw1();
+
+        //task1
+        Expr two = new Constant(2);
+        Expr four = new Constant(4);
+        Expr negOne = new Negate(new Constant(1));
+        Expr sumTwoFour = new Addition(two, four);
+        Expr mult = new Multiplication(sumTwoFour, negOne);
+        Expr exp = new Exponent(mult, 2);
+        Expr res = new Addition(exp, new Constant(1));
+
+        System.out.println(res + " = " + res.evaluate());
+
+        System.out.println();
+        //Task4
+        CallingInfo info = callingInfo();
+        System.out.println("Called from " + info.className() + "#" + info.methodName());
     }
 }
