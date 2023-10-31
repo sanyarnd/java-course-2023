@@ -1,27 +1,35 @@
 package edu.hw1;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public final class Main {
-    private final static Logger LOGGER = LogManager.getLogger();
 
     private Main() {
     }
 
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        LOGGER.info("Hello and welcome!");
+        //Task0.helloInConsole();
+        System.out.println(Task1.minutesToSeconds("01:00"));
+        //Task2.countDigits(544);
+        //Task3.isNestable(new int[]{1, 2, 3, 4}, new int[]{2, 3});
+        //Task4.fixString("badce");
+        //Task5.isPalindromeDescendant(2240);
+        //Task6.countK(1111);
+        //Task7.rotateLeft(17, 2);
+        //Task7.rotateRight(8, 1);
+        /*
+        Task8.knightBoardCapture(new int[][]{
+            {0, 0, 0, 0, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 1, 0, 0, 0, 0},
+            {1, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 0, 0, 1, 0, 0},
+            {1, 0, 0, 0, 0, 0, 0, 0}});
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 0; i <= 2; i++) {
+         */
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            LOGGER.info("i = {}", i);
-        }
     }
 }
