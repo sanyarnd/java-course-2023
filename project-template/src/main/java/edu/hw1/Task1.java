@@ -1,7 +1,7 @@
 package edu.hw1;
 
 public class Task1 {
-    private static final int secInMinute = 60;
+    private static final int SEC_IN_MINUTE = 60;
 
     private Task1() {
 
@@ -14,10 +14,10 @@ public class Task1 {
         }
         int min = Integer.parseInt(parts[0]);
         int sec = Integer.parseInt(parts[1]);
-        if (sec >= secInMinute) {
+        if (sec >= SEC_IN_MINUTE) {
             return -1;
         } else {
-            return (min * secInMinute + sec);
+            return (min * SEC_IN_MINUTE + sec);
         }
     }
 }
