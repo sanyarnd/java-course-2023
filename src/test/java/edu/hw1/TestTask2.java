@@ -1,32 +1,18 @@
 package edu.hw1;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTask2 {
-    @Test
-    @DisplayName("Test1, input 0 output 1")
-    void test1(){
-        int cnt = Task2.countDigits(0);
-        assertThat(cnt).isEqualTo(1);
-    }
-    @Test
-    @DisplayName("Test2, input 4666 output 4")
-    void test2(){
-        int cnt = Task2.countDigits(4666);
-        assertThat(cnt).isEqualTo(4);
-    }
-    @Test
-    @DisplayName("Test3, input 544 output 3")
-    void test3(){
-        int cnt = Task2.countDigits(544);
-        assertThat(cnt).isEqualTo(3);
-    }
-    @Test
-    @DisplayName("Test4, input 1092328 output 7")
-    void test4(){
-        int cnt = Task2.countDigits(1092328);
-        assertThat(cnt).isEqualTo(7);
+    @ParameterizedTest(name = "{index}: {0} = {1}")
+    @CsvSource({
+        "0, 1",
+        "5666, 4",
+        "544, 3",
+        "1092328, 7"
+    })
+    void test(int number, int ans) {
+        assertEquals(Task2.countDigits(number), ans);
     }
 }

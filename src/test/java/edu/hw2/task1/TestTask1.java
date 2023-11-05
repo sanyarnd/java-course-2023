@@ -2,45 +2,65 @@ package edu.hw2.task1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTask1 {
-    @Test
     @DisplayName("тестим Constant")
-    public void constant(){
-        assertEquals(new Constant(6).evaluate(), 6);
-        assertEquals(new Constant(-10).evaluate(), -10);
-        assertEquals(new Constant(0).evaluate(), 0);
-        assertEquals(new Constant(10000000).evaluate(), 10000000);
+    @ParameterizedTest(name = "{index}: {0} = {1}")
+    @CsvSource({
+        "6, 6",
+        "-10, -10",
+        "0, 0",
+        "10000000, 10000000"
+    })
+    public void TestConstant(int value, double ans){
+        assertEquals(new Constant(value).evaluate(), ans);
     }
-    @Test
     @DisplayName("тестим Negate")
-    public void negate(){
-        assertEquals(new Negate(new Constant(6)).evaluate(), -6);
-        assertEquals(new Negate(new Constant(-100)).evaluate(), 100);
-        assertEquals(new Negate(new Constant(0)).evaluate(), 0);
+    @ParameterizedTest(name = "{index}: {0} = {1}")
+    @CsvSource({
+        "6, -6",
+        "-10, 10",
+        "0, 0",
+        "10000000, -10000000"
+    })
+    public void TestNegate(int value, double ans){
+        assertEquals(new Negate(new Constant(value)).evaluate(), ans);
     }
-    @Test
     @DisplayName("тестим Addition")
-    public void addition(){
-        assertEquals(new Addition(new Constant(6), new Constant(5)).evaluate(), 11);
-        assertEquals(new Addition(new Constant(-20), new Constant(5)).evaluate(), -15);
-        assertEquals(new Addition(new Constant(-10), new Constant(10)).evaluate(), 0);
+    @ParameterizedTest(name = "{index}: {0} + {1} = {2}")
+    @CsvSource({
+        "6, 5, 11",
+        "-20, 5, -15",
+        "-10, 10, 0",
+        "11, 19, 30"
+    })
+    public void TestAddition(int value1, int value2, double ans){
+        assertEquals(new Addition(new Constant(value1), new Constant(value2)).evaluate(), ans);
     }
-    @Test
     @DisplayName("тестим Multiplication")
-    public void multiplication(){
-        assertEquals(new Multiplication(new Constant(6), new Constant(5)).evaluate(), 30);
-        assertEquals(new Multiplication(new Constant(-20), new Constant(5)).evaluate(), -100);
-        assertEquals(new Multiplication(new Constant(-10), new Constant(0)).evaluate(), 0);
-        assertEquals(new Multiplication(new Constant(-10), new Constant(-3)).evaluate(), 30);
+    @ParameterizedTest(name = "{index}: {0} * {1} = {2}")
+    @CsvSource({
+        "6, 5, 30",
+        "-20, 5, -100",
+        "-10, 0, 0",
+        "-10, -3, 30"
+    })
+    public void TestMultiplication(int value1, int value2, double ans){
+        assertEquals(new Multiplication(new Constant(value1), new Constant(value2)).evaluate(), ans);
     }
-    @Test
     @DisplayName("тестим Exponent")
-    public void exponent(){
-        assertEquals(new Exponent(new Constant(6), 1).evaluate(), 6);
-        assertEquals(new Exponent(new Constant(-6), 2).evaluate(), 36);
-        assertEquals(new Exponent(new Constant(-6), 3).evaluate(), -216);
-        assertEquals(new Exponent(new Constant(4), 4).evaluate(), 256);
+    @ParameterizedTest(name = "{index}: {0}^{1} = {2}")
+    @CsvSource({
+        "6, 2, 36",
+        "-10, 2, 100",
+        "2, 10, 1024",
+        "10000, 0, 1",
+        "1, 1000, 1"
+    })
+    public void TestExponent(int value, int power, double ans){
+        assertEquals(new Exponent(new Constant(value), power).evaluate(), ans);
     }
 }

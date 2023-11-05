@@ -4,7 +4,7 @@ public class Task5 {
     private Task5() {
     }
 
-    public static boolean isPalindrome(String x) {
+    private static boolean isPalindrome(String x) {
         int n = x.length();
         StringBuilder s = new StringBuilder();
         for (int i = n - 1; i > -1; --i) {
@@ -13,7 +13,7 @@ public class Task5 {
         return x.contentEquals((s));
     }
 
-    public static String newPalindrome(String x) {
+    private static String newPalindrome(String x) {
         int n = x.length();
         StringBuilder ans = new StringBuilder();
         for (int i = 0; i < n - 1; i += 2) {

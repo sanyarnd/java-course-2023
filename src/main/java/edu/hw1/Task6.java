@@ -6,7 +6,7 @@ public class Task6 {
     private Task6() {
     }
 
-    public static int k(int x) {
+    private static int k(int x) {
         var d = (Integer.toString(x)).toCharArray();
         Arrays.sort(d);
         StringBuilder s1 = new StringBuilder();
@@ -20,10 +20,10 @@ public class Task6 {
         return Integer.parseInt(s2.toString()) - Integer.parseInt(s1.toString());
     }
 
-    final static int MAGICNUM = 6174;
+    private final static int KAPREKAR_NUMBER = 6174;
 
     public static int countK(int x) {
-        if (x == MAGICNUM) {
+        if (x == KAPREKAR_NUMBER) {
             return 0;
         }
         return countK(k(x)) + 1;

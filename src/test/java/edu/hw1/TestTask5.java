@@ -1,32 +1,18 @@
 package edu.hw1;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTask5 {
-    @Test
-    @DisplayName("Test1, input 11211230 output true")
-    void test1(){
-        boolean isPalindrome = Task5.isPalindromeDescendant(11211230);
-        assertThat(isPalindrome).isEqualTo(true);
-    }
-    @Test
-    @DisplayName("Test2, input 13001120 output true")
-    void test2(){
-        boolean isPalindrome = Task5.isPalindromeDescendant(13001120);
-        assertThat(isPalindrome).isEqualTo(true);
-    }
-    @Test
-    @DisplayName("Test3, input 23336014 output true")
-    void test3(){
-        boolean isPalindrome = Task5.isPalindromeDescendant(23336014);
-        assertThat(isPalindrome).isEqualTo(true);
-    }
-    @Test
-    @DisplayName("Test4, input 425765276 output false")
-    void test4(){
-        boolean isPalindrome = Task5.isPalindromeDescendant(425765276);
-        assertThat(isPalindrome).isEqualTo(false);
+    @ParameterizedTest(name = "{index}: {0} = {1}")
+    @CsvSource({
+        "11211230, true",
+        "13001120, true",
+        "23336014, true",
+        "425765276, false"
+    })
+    void test(long num, boolean ans) {
+        assertEquals(Task5.isPalindromeDescendant(num), ans);
     }
 }
