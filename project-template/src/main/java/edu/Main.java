@@ -21,19 +21,25 @@ import edu.hw3.task6.Stock;
 import edu.hw3.task6.StockMarket;
 import edu.hw3.task6.StockMarketImpl;
 import edu.hw3.task8.ReverseIterator;
+import edu.hw4.Animal;
+import edu.hw4.ValidationError;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import static edu.hw2.task4.CallingInfo.callingInfo;
 import static edu.hw3.task2.ClusteringBrackets.clusterize;
 import static edu.hw3.task3.FrequencyOfWords.countOfWords;
 import static edu.hw3.task5.ContactlList.parseContacts;
+import static edu.hw4.ValidationError.upgradeValidAnimals;
+import static edu.hw4.ValidationError.validAnimals;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public final class Main {
     private final static Logger LOGGER = LogManager.getLogger();
 
@@ -186,11 +192,7 @@ public final class Main {
         System.out.println("Called from " + info.className() + "#" + info.methodName());
     }
 
-
-    public static void main(String[] args) {
-        //Hw1();
-        //Hw2();
-
+    public static void Hw3(){
         //task1
         String encryptedText1 = AtbashCipher.encrypt("Hello, World!");
         System.out.println(encryptedText1);
@@ -265,6 +267,236 @@ public final class Main {
 
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
+        }
+    }
+
+
+    public static void main(String[] args) {
+        //Hw1();
+        //Hw2();
+        //Hw3();
+
+        List<Animal> animals = new ArrayList<>(List.of(
+            new Animal("Марсель", Animal.Type.CAT, Animal.Sex.M, 3, 30, 5, true),
+            new Animal("Хатико", Animal.Type.DOG, Animal.Sex.M, 12, 64, 41, true),
+            new Animal("Птица говорун", Animal.Type.BIRD, Animal.Sex.M, 30, 15, 1, false),
+            new Animal("Моби Дик", Animal.Type.FISH, Animal.Sex.M, 32, 500, 1500, true),
+            new Animal("Черная вдова", Animal.Type.SPIDER, Animal.Sex.F, 2, 1, 0, true),
+            new Animal("Базилио", Animal.Type.CAT, Animal.Sex.M, 5, 35, 7, false),
+            new Animal("Муму", Animal.Type.DOG, Animal.Sex.M, 6, 35, 30, false),
+            new Animal("Кеша", Animal.Type.BIRD, Animal.Sex.M, 25, 25, 2, false),
+            new Animal("Немо", Animal.Type.FISH, Animal.Sex.M, 10, 15, 0, false),
+            new Animal("Дори", Animal.Type.FISH, Animal.Sex.F, 20, 20, 2, false)
+        ));
+
+        List<Animal> animals2 = new ArrayList<>(List.of(
+            new Animal("Шариков", Animal.Type.DOG, Animal.Sex.M, 40, 40, 35, true),
+            new Animal("Яго", Animal.Type.BIRD, Animal.Sex.M, 14, 20, 2, true),
+            new Animal("Блум", Animal.Type.FISH, Animal.Sex.F, 10, 19, 1, false),
+            new Animal("Флора", Animal.Type.FISH, Animal.Sex.F, 11, 21, 2, false)
+        ));
+
+        List<Animal> animalsForValidate = new ArrayList<>(List.of(
+            new Animal("", Animal.Type.CAT, Animal.Sex.M, 3, 30, 5, true),
+            new Animal("Хатико", Animal.Type.DOG, Animal.Sex.M, -200, 64, 41, true),
+            new Animal("Птица говорун", null, Animal.Sex.M, 30, 15, 1, false),
+            new Animal("Моби Дик", Animal.Type.FISH, null, 32, 500, 1500, true),
+            new Animal("Черная вдова", Animal.Type.SPIDER, Animal.Sex.F, 2, 1, -16925, true),
+            new Animal("Флора", Animal.Type.FISH, Animal.Sex.F, 11, -250505, 2, false),
+            new Animal("Марсель", Animal.Type.CAT, Animal.Sex.M, 3, 30, 5, true)
+        ));
+
+        System.out.println("---Задача 1---");
+        animals.sort(Comparator.comparingInt(Animal::height));
+
+        for (Animal animal : animals) {
+            System.out.println(animal.name() + " - " + animal.height());
+        }
+
+        System.out.println();
+        System.out.println("---Задача 2---");
+        int k = 2;
+        List<Animal> sortByWeight = animals.stream()
+            .sorted(Comparator.comparingInt(Animal::weight).reversed())
+            .limit(k)
+            .toList();
+        sortByWeight.forEach(animal -> System.out.println(animal.name() + " - " + animal.weight()));
+
+        System.out.println();
+        System.out.println("---Задача 3---");
+        Map<Animal.Type, Long> countByType = animals.stream()
+            .collect(Collectors.groupingBy(Animal::type, Collectors.counting()));
+        countByType.forEach((type, count) -> System.out.println(type + " - " + count));
+
+        System.out.println();
+        System.out.println("---Задача 4---");
+        Optional<Animal> getLongestName = animals.stream()
+            .max(Comparator.comparingInt(animal -> animal.name().length()));
+        getLongestName.ifPresent(animal -> System.out.println(animal.name()));
+
+        System.out.println();
+        System.out.println("---Задача 5---");
+        long maleCount = animals.stream()
+            .filter(animal -> animal.sex() == Animal.Sex.M)
+            .count();
+        long femaleCount = animals.size() - maleCount;
+        if (maleCount > femaleCount) {
+            System.out.println("Самцов больше");
+        } else if (femaleCount > maleCount) {
+            System.out.println("Самок больше");
+        } else {
+            System.out.println("Самцов и самок одинаковое количество");
+        }
+
+        System.out.println();
+        System.out.println("---Задача 6---");
+        Map<Animal.Type, Optional<Animal>> heaviestByType = animals.stream()
+            .collect(Collectors.groupingBy(Animal::type, Collectors.maxBy(Comparator.comparingInt(Animal::weight))));
+        System.out.println("Самое тяжелое животное каждого вида:");
+        heaviestByType.forEach((type, animal) -> {
+            if (animal.isPresent()) {
+                System.out.println(type + " - " + animal.get().name());
+            } else {
+                System.out.println(type + " - Нет животных этого вида");
+            }
+        });
+
+        System.out.println();
+        System.out.println("---Задача 7---");
+        animals.sort(Comparator.comparingInt(Animal::age).reversed());
+        int age = 2;
+        Animal OldestAnimal = animals.get(age - 1);
+        System.out.println(OldestAnimal);
+
+        System.out.println();
+        System.out.println("---Задача 8---");
+        int Height = 20;
+        Optional<Animal> heaviestAnimal = animals.stream()
+            .filter(animal -> animal.height() < Height)
+            .max(Comparator.comparingInt(Animal::weight));
+        heaviestAnimal.ifPresent(animal -> System.out.println(animal.name()));
+
+        System.out.println();
+        System.out.println("---Задача 9---");
+        int sumOfPaws = animals.stream()
+            .mapToInt(Animal::paws)
+            .sum();
+        System.out.println(sumOfPaws);
+
+        System.out.println();
+        System.out.println("---Задача 10---");
+        List<Animal> differentPaws = animals.stream()
+            .filter(animal -> animal.age() != animal.paws())
+            .toList();
+        differentPaws.forEach(animal -> System.out.println(animal.name()));
+
+        System.out.println();
+        System.out.println("---Задача 11---");
+        List<Animal> biteAndHighAnimals = animals.stream()
+            .filter(animal -> animal.bites() && animal.height() > 100)
+            .toList();
+        biteAndHighAnimals.forEach(animal -> System.out.println(animal.name()));
+
+        System.out.println();
+        System.out.println("---Задача 12---");
+        long weightGreaterThanHeightCount = animals.stream()
+            .filter(animal -> animal.weight() > animal.height())
+            .count();
+        System.out.println(weightGreaterThanHeightCount);
+
+        System.out.println();
+        System.out.println("---Задача 13---");
+        List<Animal> namesWithMoreThanTwoWords = animals.stream()
+            .filter(animal -> animal.name().split(" ").length > 2)
+            .toList();
+        if (namesWithMoreThanTwoWords.size() > 0) {
+            for (var animal : namesWithMoreThanTwoWords) {
+                System.out.println(animal);
+            }
+        } else {
+            System.out.println("Нет таких животных");
+        }
+
+        System.out.println();
+        System.out.println("---Задача 14---");
+        int DogHeight = 35;
+        boolean TallDog = animals.stream()
+            .filter(animal -> animal.type() == Animal.Type.DOG)
+            .anyMatch(animal -> animal.height() > DogHeight);
+        if (TallDog) {
+            System.out.println("В списке есть собака ростом более " + DogHeight + " см");
+        } else {
+            System.out.println("В списке нет собаки ростом более " + DogHeight + " см");
+        }
+
+        System.out.println();
+        System.out.println("---Задача 15---");
+        int minAge = 1;
+        int maxAge = 50;
+        Map<Animal.Type, Integer> totalWeightByType = animals.stream()
+            .filter(animal -> animal.age() >= minAge && animal.age() <= maxAge)
+            .collect(Collectors.groupingBy(Animal::type, Collectors.summingInt(Animal::weight)));
+        totalWeightByType.forEach((type, totalWeight) -> System.out.println(type + " - " + totalWeight));
+
+        System.out.println();
+        System.out.println("---Задача 16---");
+        List<Animal> sortedByTypeSexName = animals.stream()
+            .sorted(Comparator.comparing(Animal::type)
+                .thenComparing(Animal::sex)
+                .thenComparing(Animal::name))
+            .toList();
+        sortedByTypeSexName.forEach(animal -> System.out.println(animal.name()));
+
+        System.out.println();
+        System.out.println("---Задача 17---");
+        boolean spidersBiteMoreThanDogs = animals.stream()
+            .filter(animal -> animal.type() == Animal.Type.SPIDER || animal.type() == Animal.Type.DOG)
+            .anyMatch(Animal::bites);
+        if (spidersBiteMoreThanDogs) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+
+        System.out.println();
+        System.out.println("---Задача 18---");
+        List<Animal> allFish = new ArrayList<>();
+        allFish.addAll(animals);
+        allFish.addAll(animals2);
+
+        Optional<Animal> heaviestFish = allFish.stream()
+            .filter(animal -> animal.type() == Animal.Type.FISH)
+            .max(Comparator.comparingInt(Animal::weight));
+
+        heaviestFish.ifPresent(animal -> System.out.println(animal.name()));
+
+        System.out.println();
+        System.out.println("---Задача 19---");
+        int order19 = 1;
+        Map<String, Set<ValidationError>> validError = validAnimals(animalsForValidate);
+        for (Map.Entry<String, Set<ValidationError>> entry : validError.entrySet()) {
+            System.out.print(order19 + ") ");
+            System.out.print(entry.getKey() + " - ");
+            if (entry.getValue().size() > 0) {
+                for (var i : entry.getValue()) {
+                    System.out.print(i.getMsg() + " ");
+                }
+                System.out.println();
+            }
+            else {
+                System.out.println("Все корректно");
+            }
+            order19++;
+        }
+
+        System.out.println();
+        System.out.println("---Задача 20---");
+        int order20 = 1;
+        Map<String, String> validError2 = upgradeValidAnimals(animalsForValidate);
+        for (Map.Entry<String, String> entry : validError2.entrySet()) {
+            System.out.print(order20 + ") ");
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+            order20++;
         }
     }
 }
