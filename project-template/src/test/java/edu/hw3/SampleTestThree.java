@@ -99,25 +99,37 @@ public class SampleTestThree {
     }
 
     @ParameterizedTest
-    @MethodSource("data_for_parseContacts")
-    @DisplayName("Список контактов")
-    void parseContacts_validInputNumber_successTest(String[] names, String order) {
+    @MethodSource("data_for_parseContactsAsc")
+    @DisplayName("Список контактов по возрастанию")
+    void parseContactsAsc_validInputNumber_successTest(String[] names, String order) {
         String[] result;
         String[] res;
 
-        if(order.equals("ASC")) {
-            result = parseContacts(names, order);
-            res = new String[] {"Sandy Chicks", "Eugene Krabs", "Squidward Octopus", "Sheldon Plankton", "Gary Snail", "SpongeBob Squepens", "Patrick Star"};
-        }else {
-            result = parseContacts(names, order);
-            res = new String[]{"Patrick Star", "SpongeBob Squepens", "Gary Snail", "Sheldon Plankton", "Squidward Octopus", "Eugene Krabs", "Sandy Chicks"};
-        }
+        result = parseContacts(names, order);
+        res = new String[] {"Sandy Chicks", "Eugene Krabs", "Squidward Octopus", "Sheldon Plankton", "Gary Snail", "SpongeBob Squepens", "Patrick Star"};
 
         assertThat(Arrays.toString(result)).isEqualTo(Arrays.toString(res));
     }
-    private static Stream<Arguments> data_for_parseContacts() {
+    private static Stream<Arguments> data_for_parseContactsAsc() {
         return Stream.of(
-            Arguments.of(new String[] {"SpongeBob Squepens", "Squidward Octopus", "Eugene Krabs", "Patrick Star", "Sandy Chicks", "Sheldon Plankton", "Gary Snail"}, "ASC"),
+            Arguments.of(new String[] {"SpongeBob Squepens", "Squidward Octopus", "Eugene Krabs", "Patrick Star", "Sandy Chicks", "Sheldon Plankton", "Gary Snail"}, "ASC")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("data_for_parseContactsDesc")
+    @DisplayName("Список контактов по убываюнию")
+    void parseContactsDesc_validInputNumber_successTest(String[] names, String order) {
+        String[] result;
+        String[] res;
+
+        result = parseContacts(names, order);
+        res = new String[]{"Patrick Star", "SpongeBob Squepens", "Gary Snail", "Sheldon Plankton", "Squidward Octopus", "Eugene Krabs", "Sandy Chicks"};
+
+        assertThat(Arrays.toString(result)).isEqualTo(Arrays.toString(res));
+    }
+    private static Stream<Arguments> data_for_parseContactsDesc() {
+        return Stream.of(
             Arguments.of(new String[] {"SpongeBob Squepens", "Squidward Octopus", "Eugene Krabs", "Patrick Star", "Sandy Chicks", "Sheldon Plankton", "Gary Snail"}, "DESC")
         );
     }
