@@ -1,27 +1,26 @@
 package edu.project1;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.List;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public final class Main {
-    private final static Logger LOGGER = LogManager.getLogger();
-
-    private Main() {
-    }
-
+class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        LOGGER.info("Hello and welcome!");
+        Generator generator = new PrimsGenerator();
+        Solver solver = new DepthFirstSolver();
+        Renderer renderer = new ConsoleRenderer();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 0; i <= 2; i++) {
+        Maze maze = generator.generate(10, 10);
+        Coordinate start = new Coordinate(0, 0);
+        Coordinate end = new Coordinate(9, 9);
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            LOGGER.info("i = {}", i);
-        }
+        List<Coordinate> path = solver.solve(maze, start, end);
+
+        String mazeOutput = renderer.render(maze);
+        String pathOutput = renderer.render(maze, path);
+
+        System.out.println("Maze:");
+        System.out.println(mazeOutput);
+        System.out.println("Path:");
+        System.out.println(pathOutput);
     }
 }
+
