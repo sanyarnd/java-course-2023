@@ -1,4 +1,4 @@
-package edu.project1;
+package edu.project2;
 
 import java.util.List;
 

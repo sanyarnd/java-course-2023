@@ -1,4 +1,4 @@
-package edu.project1;
+package edu.project2;
 
 public final class Maze {
     private final int height;

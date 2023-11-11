@@ -1,4 +1,4 @@
-package edu.project1;
+package edu.project2;
 
 import edu.hw1.EvenArrayUtils;
 import org.junit.jupiter.api.DisplayName;
