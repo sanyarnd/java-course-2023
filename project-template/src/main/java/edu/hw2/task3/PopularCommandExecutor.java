@@ -25,6 +25,7 @@ public final class PopularCommandExecutor {
                 attempts++;
             }
         }
-        throw new ConnectionException(new RuntimeException("Failed to execute command after " + maxAttempts + " attempts"));
+        throw new ConnectionException(new RuntimeException(
+            "Failed to execute command after " + maxAttempts + " attempts"));
     }
 }

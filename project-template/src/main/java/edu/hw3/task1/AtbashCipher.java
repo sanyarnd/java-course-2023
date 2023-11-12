@@ -9,7 +9,7 @@ public class AtbashCipher {
         return result.toString();
     }
 
-    public static StringBuilder reverseLetter(String text, StringBuilder result){
+    public static StringBuilder reverseLetter(String text, StringBuilder result) {
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
                 char encryptedChar;

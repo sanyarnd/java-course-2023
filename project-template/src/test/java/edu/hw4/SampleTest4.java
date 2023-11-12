@@ -23,6 +23,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForSortByHeight() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -47,6 +48,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForSortByWeight() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -69,6 +71,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForCountByType() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -92,6 +95,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForGetLongestName() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -111,6 +115,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForNumberOfAnimalsByGender() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -130,6 +135,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForHeaviestByType() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -153,6 +159,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForOldestAnimal() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -172,6 +179,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForHeaviestAnimal() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -191,6 +199,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForSumOfPaws() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -201,6 +210,7 @@ public class SampleTest4 {
             ), 14)
         );
     }
+
     @ParameterizedTest
     @MethodSource("dataForDifferentPaws")
     @DisplayName("Список животных, возраст у которых не совпадает с количеством лап")
@@ -209,6 +219,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForDifferentPaws() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -233,6 +244,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForBiteAndHighAnimals() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -254,6 +266,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForWeightGreaterThanHeightCount() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -273,6 +286,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForNamesWithMoreThanTwoWords() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -292,6 +306,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForTallDog() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -306,11 +321,17 @@ public class SampleTest4 {
     @ParameterizedTest
     @MethodSource("dataForTotalWeightByType")
     @DisplayName("Найти суммарный вес животных каждого вида")
-    void totalWeightByType_validInputArrayList_successTest(List<Animal> animals, int minAge, int maxAge, Map<Animal.Type, Integer> res) {
+    void totalWeightByType_validInputArrayList_successTest(
+        List<Animal> animals,
+        int minAge,
+        int maxAge,
+        Map<Animal.Type, Integer> res
+    ) {
         Map<Animal.Type, Integer> result = AnimalTasks.totalWeightByType(animals, minAge, maxAge);
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForTotalWeightByType() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -332,6 +353,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForSortedByTypeSexName() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -356,6 +378,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForSpidersBiteMoreThanDogs() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -375,6 +398,7 @@ public class SampleTest4 {
 
         assertThat(result).isEqualTo(res);
     }
+
     private static Stream<Arguments> dataForAllFish() {
         return Stream.of(
             Arguments.of(Arrays.asList(
@@ -407,12 +431,16 @@ public class SampleTest4 {
         assertNull(thirdError);
 
         String fourthError = errors.get("БимБим");
-        assertEquals("Возраст не может быть отрицательным Рост не может быть отрицательным Вес не может быть отрицательным " +
-            "Тип не может быть пустым значением Пол не может быть пустым значением ", fourthError);
+        assertEquals(
+            "Возраст не может быть отрицательным Рост не может быть отрицательным Вес не может быть отрицательным " +
+                "Тип не может быть пустым значением Пол не может быть пустым значением ",
+            fourthError
+        );
     }
+
     private static Stream<Arguments> dataForValidateAnimals() {
         return Stream.of(
-            Arguments.of( new ArrayList<>(List.of(
+            Arguments.of(new ArrayList<>(List.of(
                 new Animal("", Animal.Type.CAT, Animal.Sex.M, 3, 30, 5, true),
                 new Animal("Хатико", Animal.Type.DOG, Animal.Sex.M, -200, 64, 41, true),
                 new Animal("БомБом", Animal.Type.CAT, Animal.Sex.M, 3, 30, 5, true),

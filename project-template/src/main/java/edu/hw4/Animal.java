@@ -1,5 +1,6 @@
 package edu.hw4;
 
+@SuppressWarnings("MagicNumber")
 public record Animal(
     String name,
     Type type,
@@ -8,8 +9,7 @@ public record Animal(
     int height,
     int weight,
     boolean bites
-)
-{
+) {
     public enum Type {
         CAT, DOG, BIRD, FISH, SPIDER
     }

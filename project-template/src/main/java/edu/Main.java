@@ -23,30 +23,26 @@ import edu.hw3.task6.StockMarketImpl;
 import edu.hw3.task8.ReverseIterator;
 import edu.hw4.Animal;
 import edu.hw4.AnimalTasks;
-import edu.hw4.ValidationError;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 import static edu.hw2.task4.CallingInfo.callingInfo;
 import static edu.hw3.task2.ClusteringBrackets.clusterize;
 import static edu.hw3.task3.FrequencyOfWords.countOfWords;
 import static edu.hw3.task5.ContactlList.parseContacts;
-import static edu.hw4.ValidationError.upgradeValidAnimals;
-import static edu.hw4.ValidationError.validAnimals;
 
+@SuppressWarnings("MagicNumber")
 public final class Main {
     private final static Logger LOGGER = LogManager.getLogger();
 
-    private Main() {}
+    private Main() {
+    }
 
-    public static void Hw1(){
+    public static void Hw1() {
         Task1 task1 = new Task1();
         String length = "01:00";
         int totalSeconds = task1.minutesToSeconds(length);
@@ -175,7 +171,7 @@ public final class Main {
         System.out.println(task8.knightBoardCapture(board2));
     }
 
-    public static void Hw2(){
+    public static void Hw2() {
         //task1
         Expr two = new Constant(2);
         Expr four = new Constant(4);
@@ -193,11 +189,12 @@ public final class Main {
         System.out.println("Called from " + info.className() + "#" + info.methodName());
     }
 
-    public static void Hw3(){
+    public static void Hw3() {
         //task1
         String encryptedText1 = AtbashCipher.encrypt("Hello, World!");
         System.out.println(encryptedText1);
-        String encryptedText2 = AtbashCipher.encrypt("Any fool can write code that a computer can understand. Good programmers write code that humans can understand. ― Martin Fowler");
+        String encryptedText2 = AtbashCipher.encrypt(
+            "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. ― Martin Fowler");
         System.out.println(encryptedText2);
 
         System.out.println();
@@ -233,11 +230,11 @@ public final class Main {
 
         System.out.println();
         //task5
-        String[] contacts1 = { "John Locke", "Thomas Aquinas", "David Hume", "Rene Descartes" };
+        String[] contacts1 = {"John Locke", "Thomas Aquinas", "David Hume", "Rene Descartes"};
         String[] sortedContacts1 = parseContacts(contacts1, "ASC");
         System.out.println(Arrays.toString(sortedContacts1));
 
-        String[] contacts2 = { "Paul Erdos", "Leonhard Euler", "Carl Gauss" };
+        String[] contacts2 = {"Paul Erdos", "Leonhard Euler", "Carl Gauss"};
         String[] sortedContacts2 = parseContacts(contacts2, "DESC");
         System.out.println(Arrays.toString(sortedContacts2));
 
@@ -260,7 +257,6 @@ public final class Main {
 
         System.out.println(market.mostValuableStock().getSymbol());
 
-
         System.out.println();
         //task8
         List<Integer> numbers = List.of(1, 2, 3);
@@ -271,7 +267,7 @@ public final class Main {
         }
     }
 
-    public static void Hw4(){
+    public static void Hw4() {
         List<Animal> animals = new ArrayList<>(List.of(
             new Animal("Марсель", Animal.Type.CAT, Animal.Sex.M, 3, 30, 5, true),
             new Animal("Хатико", Animal.Type.DOG, Animal.Sex.M, 12, 64, 41, true),
@@ -426,13 +422,11 @@ public final class Main {
         AnimalTasks.upgradeValidation(animalsForValidate);
     }
 
-
     public static void main(String[] args) {
         //Hw1();
         //Hw2();
         //Hw3();
         Hw4();
-
 
     }
 }

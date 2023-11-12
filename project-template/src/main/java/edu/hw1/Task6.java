@@ -2,8 +2,9 @@ package edu.hw1;
 
 import java.util.Arrays;
 
+@SuppressWarnings("MagicNumber")
 public class Task6 {
-    public static int countK(int number){
+    public static int countK(int number) {
         if (number == 6174) {
             return 0;
         }

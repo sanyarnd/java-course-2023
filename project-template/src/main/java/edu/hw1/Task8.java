@@ -1,7 +1,8 @@
 package edu.hw1;
 
+@SuppressWarnings("MagicNumber")
 public class Task8 {
-    private static int[][] MOVES = {{-2, -1}, {-2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1}};
+    private final static int[][] MOVES = {{-2, -1}, {-2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1}};
 
     private static boolean hasAdjacentOnes(int[][] board, int row, int col) {
 
@@ -9,7 +10,8 @@ public class Task8 {
             int newRow = row + move[0];
             int newCol = col + move[1];
 
-            if ((newRow >= 0 && newRow < board.length && newCol >= 0 && newCol < board.length) && board[newRow][newCol] == 1) {
+            if ((newRow >= 0 && newRow < board.length && newCol >= 0 && newCol < board.length) &&
+                board[newRow][newCol] == 1) {
                 return true;
             }
         }

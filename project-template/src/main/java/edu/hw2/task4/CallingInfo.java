@@ -1,5 +1,6 @@
 package edu.hw2.task4;
 
+@SuppressWarnings("MagicNumber")
 public record CallingInfo(String className, String methodName) {
     public static CallingInfo callingInfo() {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();

@@ -10,16 +10,17 @@ import java.util.stream.Collectors;
 import static edu.hw4.ValidationError.upgradeValidAnimals;
 import static edu.hw4.ValidationError.validAnimals;
 
+@SuppressWarnings("MagicNumber")
 public class AnimalTasks {
     //task1
-    public static List<Animal> sortByHeight(List<Animal> animals){
+    public static List<Animal> sortByHeight(List<Animal> animals) {
         animals.sort(Comparator.comparingInt(Animal::height));
 
         return animals;
     }
 
     //task2
-    public static List<Animal> sortByWeight(List<Animal> animals, int count){
+    public static List<Animal> sortByWeight(List<Animal> animals, int count) {
         List<Animal> sort = animals.stream()
             .sorted(Comparator.comparingInt(Animal::weight).reversed())
             .limit(count)
@@ -29,7 +30,7 @@ public class AnimalTasks {
     }
 
     //task3
-    public static Map<Animal.Type, Long> countByType(List<Animal> animals){
+    public static Map<Animal.Type, Long> countByType(List<Animal> animals) {
         Map<Animal.Type, Long> count = animals.stream()
             .collect(Collectors.groupingBy(Animal::type, Collectors.counting()));
 
@@ -37,7 +38,7 @@ public class AnimalTasks {
     }
 
     //task4
-    public static Optional<Animal> getLongestName(List<Animal> animals){
+    public static Optional<Animal> getLongestName(List<Animal> animals) {
         Optional<Animal> longestName = animals.stream()
             .max(Comparator.comparingInt(animal -> animal.name().length()));
 
@@ -45,7 +46,7 @@ public class AnimalTasks {
     }
 
     //task5
-    public static String numberOfAnimalsByGender(List<Animal> animals){
+    public static String numberOfAnimalsByGender(List<Animal> animals) {
         long maleCount = animals.stream()
             .filter(animal -> animal.sex() == Animal.Sex.M)
             .count();
@@ -60,7 +61,7 @@ public class AnimalTasks {
     }
 
     //task6
-    public static Map<Animal.Type, Optional<Animal>> heaviestByType(List<Animal> animals){
+    public static Map<Animal.Type, Optional<Animal>> heaviestByType(List<Animal> animals) {
         Map<Animal.Type, Optional<Animal>> heaviestByType = animals.stream()
             .collect(Collectors.groupingBy(Animal::type, Collectors.maxBy(Comparator.comparingInt(Animal::weight))));
         System.out.println("Самое тяжелое животное каждого вида:");
@@ -69,14 +70,14 @@ public class AnimalTasks {
     }
 
     //task7
-    public static Animal oldestAnimal(List<Animal> animals, int age){
+    public static Animal oldestAnimal(List<Animal> animals, int age) {
         animals.sort(Comparator.comparingInt(Animal::age).reversed());
         Animal OldestAnimal = animals.get(age - 1);
         return OldestAnimal;
     }
 
     //task8
-    public static Optional<Animal> heaviestAnimal(List<Animal> animals, int height){
+    public static Optional<Animal> heaviestAnimal(List<Animal> animals, int height) {
         Optional<Animal> heaviest = animals.stream()
             .filter(animal -> animal.height() < height)
             .max(Comparator.comparingInt(Animal::weight));
@@ -84,7 +85,7 @@ public class AnimalTasks {
     }
 
     //task9
-    public static int sumOfPaws(List<Animal> animals){
+    public static int sumOfPaws(List<Animal> animals) {
         int sum = animals.stream()
             .mapToInt(Animal::paws)
             .sum();
@@ -92,7 +93,7 @@ public class AnimalTasks {
     }
 
     //task10
-    public static List<Animal> differentPaws(List<Animal> animals){
+    public static List<Animal> differentPaws(List<Animal> animals) {
         List<Animal> different = animals.stream()
             .filter(animal -> animal.age() != animal.paws())
             .toList();
@@ -115,7 +116,7 @@ public class AnimalTasks {
             .filter(animal -> animal.weight() > animal.height())
             .count();
 
-       return weight;
+        return weight;
     }
 
     //task13
@@ -190,8 +191,7 @@ public class AnimalTasks {
                     System.out.print(i.getMsg() + " ");
                 }
                 System.out.println();
-            }
-            else {
+            } else {
                 System.out.println("Все корректно");
             }
             order19++;
