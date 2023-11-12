@@ -22,6 +22,7 @@ import edu.hw3.task6.StockMarket;
 import edu.hw3.task6.StockMarketImpl;
 import edu.hw3.task8.ReverseIterator;
 import edu.hw4.Animal;
+import edu.hw4.AnimalTasks;
 import edu.hw4.ValidationError;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -270,12 +271,7 @@ public final class Main {
         }
     }
 
-
-    public static void main(String[] args) {
-        //Hw1();
-        //Hw2();
-        //Hw3();
-
+    public static void Hw4(){
         List<Animal> animals = new ArrayList<>(List.of(
             new Animal("Марсель", Animal.Type.CAT, Animal.Sex.M, 3, 30, 5, true),
             new Animal("Хатико", Animal.Type.DOG, Animal.Sex.M, 12, 64, 41, true),
@@ -307,53 +303,38 @@ public final class Main {
         ));
 
         System.out.println("---Задача 1---");
-        animals.sort(Comparator.comparingInt(Animal::height));
-
-        for (Animal animal : animals) {
+        List<Animal> output = AnimalTasks.sortByHeight(animals);
+        for (Animal animal : output) {
             System.out.println(animal.name() + " - " + animal.height());
         }
 
         System.out.println();
         System.out.println("---Задача 2---");
-        int k = 2;
-        List<Animal> sortByWeight = animals.stream()
-            .sorted(Comparator.comparingInt(Animal::weight).reversed())
-            .limit(k)
-            .toList();
-        sortByWeight.forEach(animal -> System.out.println(animal.name() + " - " + animal.weight()));
-
-        System.out.println();
-        System.out.println("---Задача 3---");
-        Map<Animal.Type, Long> countByType = animals.stream()
-            .collect(Collectors.groupingBy(Animal::type, Collectors.counting()));
-        countByType.forEach((type, count) -> System.out.println(type + " - " + count));
-
-        System.out.println();
-        System.out.println("---Задача 4---");
-        Optional<Animal> getLongestName = animals.stream()
-            .max(Comparator.comparingInt(animal -> animal.name().length()));
-        getLongestName.ifPresent(animal -> System.out.println(animal.name()));
-
-        System.out.println();
-        System.out.println("---Задача 5---");
-        long maleCount = animals.stream()
-            .filter(animal -> animal.sex() == Animal.Sex.M)
-            .count();
-        long femaleCount = animals.size() - maleCount;
-        if (maleCount > femaleCount) {
-            System.out.println("Самцов больше");
-        } else if (femaleCount > maleCount) {
-            System.out.println("Самок больше");
-        } else {
-            System.out.println("Самцов и самок одинаковое количество");
+        int countFirst = 2;
+        List<Animal> sortedByWeight = AnimalTasks.sortByWeight(animals, countFirst);
+        for (Animal animal : sortedByWeight) {
+            System.out.println(animal.name() + " - " + animal.weight());
         }
 
         System.out.println();
+        System.out.println("---Задача 3---");
+        Map<Animal.Type, Long> countedByType = AnimalTasks.countByType(animals);
+        countedByType.forEach((type, count) -> System.out.println(type + " - " + count));
+
+        System.out.println();
+        System.out.println("---Задача 4---");
+        Optional<Animal> longestName = AnimalTasks.getLongestName(animals);
+        longestName.ifPresent(animal -> System.out.println(animal.name()));
+
+        System.out.println();
+        System.out.println("---Задача 5---");
+        String popularGender = AnimalTasks.numberOfAnimalsByGender(animals);
+        System.out.println(popularGender);
+
+        System.out.println();
         System.out.println("---Задача 6---");
-        Map<Animal.Type, Optional<Animal>> heaviestByType = animals.stream()
-            .collect(Collectors.groupingBy(Animal::type, Collectors.maxBy(Comparator.comparingInt(Animal::weight))));
-        System.out.println("Самое тяжелое животное каждого вида:");
-        heaviestByType.forEach((type, animal) -> {
+        Map<Animal.Type, Optional<Animal>> heaviest = AnimalTasks.heaviestByType(animals);
+        heaviest.forEach((type, animal) -> {
             if (animal.isPresent()) {
                 System.out.println(type + " - " + animal.get().name());
             } else {
@@ -363,54 +344,41 @@ public final class Main {
 
         System.out.println();
         System.out.println("---Задача 7---");
-        animals.sort(Comparator.comparingInt(Animal::age).reversed());
         int age = 2;
-        Animal OldestAnimal = animals.get(age - 1);
-        System.out.println(OldestAnimal);
+        Animal olderAnimal = AnimalTasks.oldestAnimal(animals, age);
+        System.out.println(olderAnimal);
 
         System.out.println();
         System.out.println("---Задача 8---");
-        int Height = 20;
-        Optional<Animal> heaviestAnimal = animals.stream()
-            .filter(animal -> animal.height() < Height)
-            .max(Comparator.comparingInt(Animal::weight));
-        heaviestAnimal.ifPresent(animal -> System.out.println(animal.name()));
+        int height = 20;
+        Optional<Animal> heviest = AnimalTasks.heaviestAnimal(animals, height);
+        heviest.ifPresent(animal -> System.out.println(animal.name()));
 
         System.out.println();
         System.out.println("---Задача 9---");
-        int sumOfPaws = animals.stream()
-            .mapToInt(Animal::paws)
-            .sum();
-        System.out.println(sumOfPaws);
+        int sumPaws = AnimalTasks.sumOfPaws(animals);
+        System.out.println(sumPaws);
 
         System.out.println();
         System.out.println("---Задача 10---");
-        List<Animal> differentPaws = animals.stream()
-            .filter(animal -> animal.age() != animal.paws())
-            .toList();
-        differentPaws.forEach(animal -> System.out.println(animal.name()));
+        List<Animal> different = AnimalTasks.differentPaws(animals);
+        different.forEach(animal -> System.out.println(animal.name()));
 
         System.out.println();
         System.out.println("---Задача 11---");
-        List<Animal> biteAndHighAnimals = animals.stream()
-            .filter(animal -> animal.bites() && animal.height() > 100)
-            .toList();
-        biteAndHighAnimals.forEach(animal -> System.out.println(animal.name()));
+        List<Animal> biteAndHigh = AnimalTasks.biteAndHighAnimals(animals);
+        biteAndHigh.forEach(animal -> System.out.println(animal.name()));
 
         System.out.println();
         System.out.println("---Задача 12---");
-        long weightGreaterThanHeightCount = animals.stream()
-            .filter(animal -> animal.weight() > animal.height())
-            .count();
-        System.out.println(weightGreaterThanHeightCount);
+        long weight = AnimalTasks.weightGreaterThanHeightCount(animals);
+        System.out.println(weight);
 
         System.out.println();
         System.out.println("---Задача 13---");
-        List<Animal> namesWithMoreThanTwoWords = animals.stream()
-            .filter(animal -> animal.name().split(" ").length > 2)
-            .toList();
-        if (namesWithMoreThanTwoWords.size() > 0) {
-            for (var animal : namesWithMoreThanTwoWords) {
+        List<Animal> names = AnimalTasks.namesWithMoreThanTwoWords(animals);
+        if (names.size() > 0) {
+            for (var animal : names) {
                 System.out.println(animal);
             }
         } else {
@@ -419,84 +387,52 @@ public final class Main {
 
         System.out.println();
         System.out.println("---Задача 14---");
-        int DogHeight = 35;
-        boolean TallDog = animals.stream()
-            .filter(animal -> animal.type() == Animal.Type.DOG)
-            .anyMatch(animal -> animal.height() > DogHeight);
-        if (TallDog) {
-            System.out.println("В списке есть собака ростом более " + DogHeight + " см");
+        int dogHeight = 35;
+        boolean dog = AnimalTasks.tallDog(animals, dogHeight);
+        if (dog) {
+            System.out.println("В списке есть собака ростом более " + dogHeight + " см");
         } else {
-            System.out.println("В списке нет собаки ростом более " + DogHeight + " см");
+            System.out.println("В списке нет собаки ростом более " + dogHeight + " см");
         }
 
         System.out.println();
         System.out.println("---Задача 15---");
         int minAge = 1;
         int maxAge = 50;
-        Map<Animal.Type, Integer> totalWeightByType = animals.stream()
-            .filter(animal -> animal.age() >= minAge && animal.age() <= maxAge)
-            .collect(Collectors.groupingBy(Animal::type, Collectors.summingInt(Animal::weight)));
+        Map<Animal.Type, Integer> totalWeightByType = AnimalTasks.totalWeightByType(animals, minAge, maxAge);
         totalWeightByType.forEach((type, totalWeight) -> System.out.println(type + " - " + totalWeight));
 
         System.out.println();
         System.out.println("---Задача 16---");
-        List<Animal> sortedByTypeSexName = animals.stream()
-            .sorted(Comparator.comparing(Animal::type)
-                .thenComparing(Animal::sex)
-                .thenComparing(Animal::name))
-            .toList();
-        sortedByTypeSexName.forEach(animal -> System.out.println(animal.name()));
+        List<Animal> sorted = AnimalTasks.sortedByTypeSexName(animals);
+        sorted.forEach(animal -> System.out.println(animal.name()));
 
         System.out.println();
         System.out.println("---Задача 17---");
-        boolean spidersBiteMoreThanDogs = animals.stream()
-            .filter(animal -> animal.type() == Animal.Type.SPIDER || animal.type() == Animal.Type.DOG)
-            .anyMatch(Animal::bites);
-        if (spidersBiteMoreThanDogs) {
-            System.out.println(true);
-        } else {
-            System.out.println(false);
-        }
+        boolean spidersAndDogs = AnimalTasks.spidersBiteMoreThanDogs(animals);
+        System.out.println(spidersAndDogs);
 
         System.out.println();
         System.out.println("---Задача 18---");
-        List<Animal> allFish = new ArrayList<>();
-        allFish.addAll(animals);
-        allFish.addAll(animals2);
-
-        Optional<Animal> heaviestFish = allFish.stream()
-            .filter(animal -> animal.type() == Animal.Type.FISH)
-            .max(Comparator.comparingInt(Animal::weight));
-
+        Optional<Animal> heaviestFish = AnimalTasks.allFish(animals, animals2);
         heaviestFish.ifPresent(animal -> System.out.println(animal.name()));
 
         System.out.println();
         System.out.println("---Задача 19---");
-        int order19 = 1;
-        Map<String, Set<ValidationError>> validError = validAnimals(animalsForValidate);
-        for (Map.Entry<String, Set<ValidationError>> entry : validError.entrySet()) {
-            System.out.print(order19 + ") ");
-            System.out.print(entry.getKey() + " - ");
-            if (entry.getValue().size() > 0) {
-                for (var i : entry.getValue()) {
-                    System.out.print(i.getMsg() + " ");
-                }
-                System.out.println();
-            }
-            else {
-                System.out.println("Все корректно");
-            }
-            order19++;
-        }
+        AnimalTasks.validation(animalsForValidate);
 
         System.out.println();
         System.out.println("---Задача 20---");
-        int order20 = 1;
-        Map<String, String> validError2 = upgradeValidAnimals(animalsForValidate);
-        for (Map.Entry<String, String> entry : validError2.entrySet()) {
-            System.out.print(order20 + ") ");
-            System.out.println(entry.getKey() + " - " + entry.getValue());
-            order20++;
-        }
+        AnimalTasks.upgradeValidation(animalsForValidate);
+    }
+
+
+    public static void main(String[] args) {
+        //Hw1();
+        //Hw2();
+        //Hw3();
+        Hw4();
+
+
     }
 }
