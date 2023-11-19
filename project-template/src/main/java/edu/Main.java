@@ -23,6 +23,13 @@ import edu.hw3.task6.StockMarketImpl;
 import edu.hw3.task8.ReverseIterator;
 import edu.hw4.Animal;
 import edu.hw4.AnimalTasks;
+import edu.project2.MazeLogic.ConsoleInterpreter;
+import edu.project2.Components.Coordinates;
+import edu.project2.MazeLogic.MazeGenerator;
+import edu.project2.MazeLogic.MazeSolver;
+import edu.project2.Interfaces.Generator;
+import edu.project2.Components.Maze;
+import edu.project2.Interfaces.Solver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
@@ -30,6 +37,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
+import java.util.Scanner;
 import static edu.hw2.task4.CallingInfo.callingInfo;
 import static edu.hw3.task2.ClusteringBrackets.clusterize;
 import static edu.hw3.task3.FrequencyOfWords.countOfWords;
@@ -422,11 +431,52 @@ public final class Main {
         AnimalTasks.upgradeValidation(animalsForValidate);
     }
 
+    public static void ProjectMaze() {
+        int height = 10;
+        int width = 10;
+
+        Generator generator = new MazeGenerator(new Random());
+        Maze maze = generator.generate(height, width);
+
+        System.out.println("Лабиринт:");
+        System.out.println(new ConsoleInterpreter().render(maze));
+
+        System.out.println("Вам необходимо ввести координаты конечной и начальной точки:");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("x1: ");
+        int x1 = scanner.nextInt();
+        System.out.print("y1: ");
+        int y1 = scanner.nextInt();
+        Coordinates start = new Coordinates(x1, y1);
+        System.out.print("x2: ");
+        int x2 = scanner.nextInt();
+        System.out.print("y2: ");
+        int y2 = scanner.nextInt();
+        Coordinates end = new Coordinates(x2, y2);
+
+        System.out.print("Вы хотите проложить путь из ");
+        System.out.print("(" + start.row() + ", " + start.col() + ")");
+        System.out.print(" в ");
+        System.out.print("(" + end.row() + ", " + end.col() + ")");
+        System.out.println();
+        Solver solver = new MazeSolver();
+        List<Coordinates> path = solver.solve(maze, start, end);
+        System.out.println();
+        System.out.println();
+        if (path.size() != 0) {
+            System.out.println("Вывод пути в лабиринте:");
+            System.out.println(new ConsoleInterpreter().render(maze, path));
+        } else {
+            System.out.println("Такого пути не существует");
+        }
+    }
+
     public static void main(String[] args) {
         //Hw1();
         //Hw2();
         //Hw3();
-        Hw4();
+        //Hw4();
+        ProjectMaze();
 
     }
 }
