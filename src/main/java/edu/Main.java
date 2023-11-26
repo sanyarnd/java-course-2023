@@ -24,6 +24,12 @@ import edu.hw3.task8.ReverseIterator;
 import edu.hw4.Animal;
 import edu.hw4.AnimalTasks;
 import edu.hw5.task3.DateParser;
+import edu.hw6.task1.DiskMap;
+import edu.hw6.task2.CloneFile;
+import edu.hw6.task3.AbstractFilter;
+import edu.hw6.task3.Filter;
+import edu.hw6.task4.FileOutputExample;
+import edu.hw6.task5.HackerNews;
 import edu.project2.MazeLogic.ConsoleInterpreter;
 import edu.project2.Components.Coordinates;
 import edu.project2.MazeLogic.MazeGenerator;
@@ -33,6 +39,11 @@ import edu.project2.Components.Maze;
 import edu.project2.Interfaces.Solver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -55,6 +66,7 @@ import static edu.hw5.task6.SubsequenceValidator.isSubsequence;
 import static edu.hw5.task7.SubsequenceValidatorForNumber.containsAtLeastThreeCharsWithThirdZero;
 import static edu.hw5.task7.SubsequenceValidatorForNumber.lengthBetweenOneAndTree;
 import static edu.hw5.task7.SubsequenceValidatorForNumber.startsAndEndsWithSameChar;
+import static edu.hw6.task2.CloneFile.getCloneFile;
 
 @SuppressWarnings("MagicNumber")
 public final class Main {
@@ -483,13 +495,7 @@ public final class Main {
         }
     }
 
-    public static void main(String[] args) {
-        //Hw1();
-        //Hw2();
-        //Hw3();
-        //Hw4();
-        //ProjectMaze();
-
+    public static void Hw5() {
         //task1
         List<String> sessions = List.of(
             "2022-03-12, 20:20 - 2022-03-12, 23:50",
@@ -557,5 +563,67 @@ public final class Main {
         System.out.println(lengthBetweenOneAndTree("0"));
         System.out.println(lengthBetweenOneAndTree("00"));
         System.out.println(lengthBetweenOneAndTree("0000"));
+    }
+
+    public static void main(String[] args) throws IOException {
+        //Hw1();
+        //Hw2();
+        //Hw3();
+        //Hw4();
+        //ProjectMaze();
+        //Hw5()
+
+        // Task 1
+        DiskMap diskMap = new DiskMap("src/main/java/edu/hw6/task1/disk.txt");
+
+        diskMap.put("Игра первая", "Платформер");
+        diskMap.put("Игра вторая", "Хоррор");
+        diskMap.put("Игра третья", "Рогалик");
+
+        System.out.println("Размер: " + diskMap.size());
+        System.out.println("Значения: " + diskMap.values());
+
+        diskMap.remove("Игра вторая");
+
+        System.out.println("Размер: " + diskMap.size());
+        System.out.println("Значения: " + diskMap.values());
+
+        if (diskMap.containsKey("Игра первая")) {
+            System.out.println("Жанря для Игра первая: " + diskMap.get("Игра первая"));
+        }
+
+        if (diskMap.isEmpty()) {
+            System.out.println("Диск пустой.");
+        } else {
+            System.out.println("Диск не пустой.");
+        }
+
+        System.out.println();
+        //task2
+        Path path = Paths.get("src/main/java/edu/hw6/task2/fileToClone.txt");
+        getCloneFile(path);
+
+        System.out.println();
+        //task3
+        AbstractFilter filter1 = Filter.largerThan(1000).and(Filter.magicNumber(0x50, 0x4B));
+        AbstractFilter filter2 = Filter.globMatches("*.txt").or(Filter.regexContains(".*test.*"));
+
+        System.out.println();
+        //task4
+        String text = "Programming is learned by writing programs. ― Brian Kernighan";
+        try {
+            FileOutputExample.writeToFile(text, "src/main/java/edu/hw6/task4/output.txt");
+            System.out.println("Текст был успешно записан в файл.");
+        } catch (IOException e) {
+            System.out.println("При записи в файл произошла ошибка: " + e.getMessage());
+        }
+
+        System.out.println();
+        // task 5
+        HackerNews hn = new HackerNews();
+        long[] topStories = HackerNews.hackerNewsTopStories();
+        System.out.println(Arrays.toString(topStories));
+        String newsTitle = HackerNews.news(38421862);
+        System.out.println(newsTitle);
     }
 }
