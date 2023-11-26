@@ -11,11 +11,8 @@ class MonteCarloPiCalculatorTest {
         final int[] threadCountArr = {1, 6};
         final int experiments = 5;
 
-        for (int i = 0; i < pointCountArr.length; i++) {
-            int pointCount = pointCountArr[i];
-
-            for (int j = 0; j < threadCountArr.length; j++) {
-                int threadCount = threadCountArr[j];
+        for (int pointCount : pointCountArr) {
+            for (int threadCount : threadCountArr) {
                 long timeSum = 0;
                 double piAproxSum = 0;
 
