@@ -1,7 +1,6 @@
 package edu.hw5;
 
-import edu.hw4.Animal;
-import edu.hw4.AnimalTasks;
+import edu.hw5.task3.DateParser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,7 +14,6 @@ import java.util.stream.Stream;
 import static edu.hw5.task1.ComputerClubAnalytics.calculateAverageSessionDuration;
 import static edu.hw5.task2.FridayThirteenFinder.findFridaysThirteens;
 import static edu.hw5.task2.FridayThirteenFinder.findNextFridayThirteen;
-import static edu.hw5.task3.DateParser.parseDate;
 import static edu.hw5.task4.PasswordValidator.validatePassword;
 import static edu.hw5.task5.CarNumberValidator.validateCarNumber;
 import static edu.hw5.task6.SubsequenceValidator.isSubsequence;
@@ -28,12 +26,12 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForComputerClubAnalytics")
     @DisplayName("Среднее время")
-    void computerClubAnalytics_validInputArrayList_successTest(List<String> dates, String res) {
+    void computerClubAnalytics_validInputArrayList_successTest(List<String> dates, String expectedResult) {
         Duration avr = calculateAverageSessionDuration(dates);
-        String result = avr.toHours() + "ч " +
+        String underTest = avr.toHours() + "ч " +
             (avr.toMinutes() % 60) + "м";
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForComputerClubAnalytics() {
@@ -48,11 +46,11 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForFridayThirteenFinder")
     @DisplayName("Количество пятниц 13-х в году")
-    void fridayThirteenFinder_validInputArrayList_successTest(int year, String res) {
+    void fridayThirteenFinder_validInputArrayList_successTest(int year, String expectedResult) {
         List<LocalDate> fridaysThirteens = findFridaysThirteens(year);
-        String result = "Fridays the 13th in " + year + ": " + fridaysThirteens;
+        String underTest = "Fridays the 13th in " + year + ": " + fridaysThirteens;
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForFridayThirteenFinder() {
@@ -65,12 +63,12 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForFindNextFridayThirteen")
     @DisplayName("Следующая пятница 13-ое")
-    void findNextFridayThirteen_validInputArrayList_successTest(int year, int month, int day, String res) {
+    void findNextFridayThirteen_validInputArrayList_successTest(int year, int month, int day, String expectedResult) {
         LocalDate date = LocalDate.of(year, month, day);
         LocalDate nextFridayThirteen = findNextFridayThirteen(date);
-        String result = "Next Friday the 13th after " + date + ": " + nextFridayThirteen;
+        String underTest = "Next Friday the 13th after " + date + ": " + nextFridayThirteen;
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForFindNextFridayThirteen() {
@@ -83,11 +81,12 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForDateParser")
     @DisplayName("Парсинг дат")
-    void dateParser_validInputArrayList_successTest(String date, String res) {
-        Optional<LocalDate> validDate = parseDate(date);
-        String result = validDate.toString();
+    void dateParser_validInputArrayList_successTest(String date, String expectedResult) {
+        DateParser dateParser = new DateParser();
+        Optional<LocalDate> validDate = dateParser.parseDate(date);
+        String underTest = validDate.toString();
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForDateParser() {
@@ -100,10 +99,10 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForPasswordValidator")
     @DisplayName("Валидация пароля")
-    void passwordValidator_validInputArrayList_successTest(String pass, boolean res) {
-        boolean result = validatePassword(pass);
+    void passwordValidator_validInputArrayList_successTest(String pass, boolean expectedResult) {
+        boolean underTest = validatePassword(pass);
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForPasswordValidator() {
@@ -117,10 +116,10 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForCarNumberValidator")
     @DisplayName("Валидация номеров машин")
-    void carNumberValidator_validInputArrayList_successTest(String pass, boolean res) {
-        boolean result = validateCarNumber(pass);
+    void carNumberValidator_validInputArrayList_successTest(String pass, boolean expectedResult) {
+        boolean underTest = validateCarNumber(pass);
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForCarNumberValidator() {
@@ -134,10 +133,10 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForSubsequenceValidator")
     @DisplayName("Регулярные выражения для строк - 1")
-    void subsequenceValidator_validInputArrayList_successTest(String str, String subStr, boolean res) {
-        boolean result = isSubsequence(str, subStr);
+    void subsequenceValidator_validInputArrayList_successTest(String str, String subStr, boolean expectedResult) {
+        boolean underTest = isSubsequence(str, subStr);
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForSubsequenceValidator() {
@@ -151,10 +150,10 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForContainsAtLeastThreeCharsWithThirdZero")
     @DisplayName("Регулярные выражения для строк - 2.1")
-    void containsAtLeastThreeCharsWithThirdZero_validInputArrayList_successTest(String str, boolean res) {
-        boolean result = containsAtLeastThreeCharsWithThirdZero(str);
+    void containsAtLeastThreeCharsWithThirdZero_validInputArrayList_successTest(String str, boolean expectedResult) {
+        boolean underTest = containsAtLeastThreeCharsWithThirdZero(str);
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForContainsAtLeastThreeCharsWithThirdZero() {
@@ -168,10 +167,10 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForStartsAndEndsWithSameChar")
     @DisplayName("Регулярные выражения для строк - 2.2")
-    void startsAndEndsWithSameChar_validInputArrayList_successTest(String str, boolean res) {
-        boolean result = startsAndEndsWithSameChar(str);
+    void startsAndEndsWithSameChar_validInputArrayList_successTest(String str, boolean expectedResult) {
+        boolean underTest = startsAndEndsWithSameChar(str);
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForStartsAndEndsWithSameChar() {
@@ -185,10 +184,10 @@ public class SampleTestFifth {
     @ParameterizedTest
     @MethodSource("dataForLengthBetweenOneAndTree")
     @DisplayName("Регулярные выражения для строк - 2.3")
-    void lengthBetweenOneAndTree_validInputArrayList_successTest(String str, boolean res) {
-        boolean result = lengthBetweenOneAndTree(str);
+    void lengthBetweenOneAndTree_validInputArrayList_successTest(String str, boolean expectedResult) {
+        boolean underTest = lengthBetweenOneAndTree(str);
 
-        assertThat(result).isEqualTo(res);
+        assertThat(underTest).isEqualTo(expectedResult);
     }
 
     private static Stream<Arguments> dataForLengthBetweenOneAndTree() {

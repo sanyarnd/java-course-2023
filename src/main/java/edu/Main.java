@@ -23,6 +23,7 @@ import edu.hw3.task6.StockMarketImpl;
 import edu.hw3.task8.ReverseIterator;
 import edu.hw4.Animal;
 import edu.hw4.AnimalTasks;
+import edu.hw5.task3.DateParser;
 import edu.project2.MazeLogic.ConsoleInterpreter;
 import edu.project2.Components.Coordinates;
 import edu.project2.MazeLogic.MazeGenerator;
@@ -48,7 +49,6 @@ import static edu.hw3.task5.ContactlList.parseContacts;
 import static edu.hw5.task1.ComputerClubAnalytics.calculateAverageSessionDuration;
 import static edu.hw5.task2.FridayThirteenFinder.findFridaysThirteens;
 import static edu.hw5.task2.FridayThirteenFinder.findNextFridayThirteen;
-import static edu.hw5.task3.DateParser.parseDate;
 import static edu.hw5.task4.PasswordValidator.validatePassword;
 import static edu.hw5.task5.CarNumberValidator.validateCarNumber;
 import static edu.hw5.task6.SubsequenceValidator.isSubsequence;
@@ -512,16 +512,17 @@ public final class Main {
 
         System.out.println();
         //task3
-        System.out.println(parseDate("2020-10-10"));
-        System.out.println(parseDate("2020-12-2"));
-        System.out.println(parseDate("1/3/1976"));
-        System.out.println(parseDate("1/3/20"));
-        System.out.println(parseDate("tomorrow"));
-        System.out.println(parseDate("today"));
-        System.out.println(parseDate("yesterday"));
-        System.out.println(parseDate("1 day ago"));
-        System.out.println(parseDate("2234 days ago"));
-        System.out.println(parseDate("invalid date"));
+        DateParser dateParser = new DateParser();
+        System.out.println(dateParser.parseDate("2020-10-10"));
+        System.out.println(dateParser.parseDate("2020-12-2"));
+        System.out.println(dateParser.parseDate("1/3/1976"));
+        System.out.println(dateParser.parseDate("1/3/20"));
+        System.out.println(dateParser.parseDate("tomorrow"));
+        System.out.println(dateParser.parseDate("today"));
+        System.out.println(dateParser.parseDate("yesterday"));
+        System.out.println(dateParser.parseDate("1 day ago"));
+        System.out.println(dateParser.parseDate("2234 days ago"));
+        System.out.println(dateParser.parseDate("invalid date"));
 
         System.out.println();
         //task4
