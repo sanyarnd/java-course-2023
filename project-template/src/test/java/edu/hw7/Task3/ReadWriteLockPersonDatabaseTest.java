@@ -30,7 +30,7 @@ class ReadWriteLockPersonDatabaseTest {
     }
 
     @Test
-    public void testDelete() throws InterruptedException {
+    public void testDelete() {
         db.add(person);
         db.delete(person.id());
 
