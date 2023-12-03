@@ -9,16 +9,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Server {
-    final List<String> responses;
+    private final List<String> responses;
 
     public Server(List<String> responseList) {
         responses = responseList;
     }
 
     public void start(int port, int maxConnections) {
-        ExecutorService executorService = Executors.newFixedThreadPool(maxConnections);
-
-        try (var serverSocket = new ServerSocket(port)) {
+        try (var serverSocket = new ServerSocket(port);
+             ExecutorService executorService = Executors.newFixedThreadPool(maxConnections)) {
             while (!Thread.interrupted()) {
                 Socket clientSocket = serverSocket.accept();
                 executorService.submit(() -> handleClient(clientSocket));

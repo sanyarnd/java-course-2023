@@ -5,11 +5,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class Client {
-    final String serverIp;
-    final int serverPort;
-    Socket socket;
-    ObjectOutputStream outputStream;
-    ObjectInputStream inputStream;
+    private final String serverIp;
+    private final int serverPort;
+    private Socket socket;
+    private ObjectOutputStream outputStream;
+    private ObjectInputStream inputStream;
 
     public Client(String serverIp, int serverPort) {
         this.serverIp = serverIp;
@@ -46,8 +46,8 @@ public class Client {
             response = (String) inputStream.readObject();
         } catch (Exception ex) {
             ex.printStackTrace();
-        } finally {
-            return response;
         }
+
+        return response;
     }
 }
