@@ -20,6 +20,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
+import static java.lang.invoke.MethodType.methodType;
 
 @State(Scope.Thread)
 public class ReflectionBenchmark {
@@ -53,11 +54,13 @@ public class ReflectionBenchmark {
         directAccessMethod = Student.class.getDeclaredMethod("name");
         reflectionMethod = Student.class.getDeclaredMethod("name");
         lookup = MethodHandles.lookup();
-        MethodType methodType = MethodType.methodType(String.class);
+        MethodType methodType = methodType(String.class);
         MethodHandle methodHandle = lookup.findVirtual(Student.class, "name", methodType);
-        callSite = LambdaMetafactory.metafactory(lookup, "apply",
-            MethodType.methodType(Supplier.class, Student.class),
-            methodType, methodHandle, methodType
+        callSite = LambdaMetafactory.metafactory(lookup, "get",
+            methodType(Supplier.class, Student.class),
+            methodType(Object.class),
+            methodHandle,
+            methodType
         );
     }
 
@@ -86,4 +89,3 @@ public class ReflectionBenchmark {
         bh.consume(name);
     }
 }
-
