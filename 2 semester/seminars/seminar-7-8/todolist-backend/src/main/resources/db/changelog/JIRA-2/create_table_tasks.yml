@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_tasks
+      tag: release-2.0
+      author: turkin
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            relativeToChangelogFile: true
+            path: sql/create_table_tasks.sql

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - includeAll:
+      relativeToChangelogFile: true
+      path: JIRA-1
+  - includeAll:
+      relativeToChangelogFile: true
+      path: JIRA-2
+  - includeAll:
+      relativeToChangelogFile: true
+      path: JIRA-3
+  - includeAll:
+      relativeToChangelogFile: true
+      path: JIRA-4

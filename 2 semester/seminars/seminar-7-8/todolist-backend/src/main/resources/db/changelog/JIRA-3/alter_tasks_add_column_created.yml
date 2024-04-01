@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: alter_tasks_add_column_created
+      tag: release-3.0
+      author: turkin
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            relativeToChangelogFile: true
+            path: sql/alter_tasks_add_column_created.sql

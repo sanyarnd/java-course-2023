@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: alter_projects_add_column_created
+      author: turkin
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            relativeToChangelogFile: true
+            path: sql/alter_projects_add_column_created.sql

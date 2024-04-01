@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: todolist-backend
+  jpa:
+    open-in-view: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todolist
+    username: postgres
+    password: postgres
+
+  sql:
+    init:
+      mode: embedded
+
+  liquibase:
+    enabled: true
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+#logging:
+#  level:
+#    org.apache.kafka: DEBUG
+#    org.hibernate:
+#      SQL: DEBUG
+#      type.descriptor.sql.BasicBinder: TRACE
+
+kafka:
+  bootstrapServers: localhost:29092
+  clientId: todolist-backend
+  acksMode: all
+  deliveryTimeout: 60s
+  lingerMs: 12_000
+  batchSize: 100_000
+  maxInFlightPerConnection: 5
+  enableIdempotence: true # to handle specific retry errors
+  schemaRegistryUrl: 'http://localhost:28081'

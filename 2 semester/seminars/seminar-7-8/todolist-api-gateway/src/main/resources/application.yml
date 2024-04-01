@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: todolist-backend
+        uri: lb://todolist-backend
+        predicates:
+        - Path=/projects/**
+      - id: todolist-task-distributor
+        uri: lb://todolist-task-distributor
+        predicates:
+        - Path=/test/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 8082

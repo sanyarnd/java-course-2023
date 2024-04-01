@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_projects
+      tag: release-1.0
+      author: turkin
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: serial
+              - column:
+                  name: name
+                  type: varchar
+              - column:
+                  name: priority
+                  type: int
+            schemaName: public
+            tableName: projects
+            ifNotExists: true
+      rollback:
+        - dropTable:
+            tableName: projects
